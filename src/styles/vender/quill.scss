@@ -1,0 +1,13 @@
+.ql-editor {
+  table {
+    @apply w-full;
+
+    table-layout: fixed;
+    border-collapse: collapse;
+    td {
+      padding: 2px 5px;
+      border: 1px solid #000;
+      outline: none;
+    }
+  }
+}

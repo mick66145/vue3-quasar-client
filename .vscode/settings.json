@@ -1,0 +1,36 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.stylelint": "explicit"
+    },
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "eslint.options": {
+        "extensions": [
+            ".html",
+            ".js",
+            ".vue"
+        ]
+    },
+    "eslint.validate": [
+        "html",
+        "javascript",
+        "vue"
+    ],
+    "stylelint.validate": ["css", "scss", "vue"],
+    "css.validate": false,
+    "scss.validate": false,
+    "windicss.sortOnSave": true,
+    "i18n-ally.localesPaths": [
+        "src/locales",
+        "src/plugins/i18n"
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#2A2A4D",
+        "titleBar.activeBackground": "#3B3B6C",
+        "titleBar.activeForeground": "#FBFBFD"
+    },
+    "svn.ignoreMissingSvnWarning": true,
+    "i18n-ally.keystyle": "nested",
+    "css.lint.unknownAtRules": "ignore"
+}

@@ -1,0 +1,17 @@
+/* stylelint-disable custom-property-empty-line-before */
+@import "./abstracts/quasar-variables";
+:root {
+  /* color plate */
+
+  /* function color */
+  --color-primary: #{$primary};
+  --color-secondary: #{$secondary};
+  --color-accent: #{$accent};
+  --color-dark: #{$dark};
+  --color-positive: #{$positive};
+  --color-negative: #{$negative};
+  --color-info: #{$info};
+  --color-warning: #{$warning};
+
+  --color-func-focus: var(--color-accent);
+}

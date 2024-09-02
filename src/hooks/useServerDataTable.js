@@ -1,0 +1,98 @@
+import { reactive, ref, onMounted } from 'vue-demi'
+import useSessionStorage from './useSessionStorage'
+import mapKeys from 'lodash-es/mapKeys'
+
+export default function useServerDataTable ({
+  searchParames = {},
+  unSessionStorageParames = [], // [{field:string}]
+  sessionStorageKey = 'dashboardServerDataTable',
+  usePageSize = true,
+  callback = () => {},
+}) {
+  const { setSessionStorage, getSessionStorage } = useSessionStorage()
+
+  let sessionStorage = getSessionStorage(sessionStorageKey)
+  const search = reactive({})
+  const data = ref([])
+  const total = ref(0)
+  const unSessionStorageParamesField = unSessionStorageParames.map((item) => item.field)
+
+  const onChangePage = (page) => {
+    search.page = page
+    setSessionStorage(sessionStorageKey, { search })
+    setCallback()
+  }
+
+  const onChangePageSize = (pageSize) => {
+    search.page_size = pageSize
+    setSessionStorage(sessionStorageKey, { search })
+    setCallback()
+  }
+
+  const onChangeFilter = () => {
+    search.page = 1
+    setSessionStorage(sessionStorageKey, { search })
+    setCallback()
+  }
+
+  const onReset = () => {
+    for (const [key, value] of Object.entries(searchParames)) {
+      search[key] = value
+    }
+    search.page = 1
+    usePageSize && (search.page_size = 10)
+    setSessionStorage(sessionStorageKey, { search })
+    setCallback()
+  }
+
+  const setCallback = async () => {
+    if (callback && callback instanceof Function) {
+      const callObj = await callback()
+      if (callObj instanceof Object) {
+        const [res] = callObj
+        if (res) {
+          data.value = []
+          data.value = res.list
+          total.value = res.total
+        }
+      }
+    }
+  }
+
+  // mounted
+  onMounted(async () => {
+    if (!sessionStorage) {
+      const sessionStorageObj = {
+        search: {
+          page: 1,
+          page_size: usePageSize ? 10 : null,
+        },
+      }
+      setSessionStorage(sessionStorageKey, sessionStorageObj)
+      sessionStorage = getSessionStorage(sessionStorageKey)
+    }
+
+    mapKeys(sessionStorage.search, (_, key) => {
+      search[key] = sessionStorage.search[key]
+    })
+
+    for (const [key, value] of Object.entries(searchParames)) {
+      (!sessionStorage.search[key] && !unSessionStorageParamesField.includes(key)) && (search[key] = value)
+    }
+
+    for (const [key, value] of Object.entries(searchParames)) {
+      (unSessionStorageParamesField.includes(key)) && (search[key] = value)
+    }
+    setCallback()
+  })
+
+  return {
+    search,
+    data,
+    total,
+    onChangePage,
+    onChangePageSize,
+    onChangeFilter,
+    onReset,
+  }
+}

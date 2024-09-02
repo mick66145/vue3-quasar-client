@@ -1,0 +1,58 @@
+@use "sass:math";
+@import "../abstracts/quasar-variables";
+
+// 計算百分比的函數
+@function percentage($fraction, $total-columns) {
+  @if type-of($fraction) != "number" or type-of($total-columns) != "number" {
+    @error "百分比函數需要數字作為參數。";
+  }
+  
+  @return math.div($fraction, $total-columns) * 100%;
+}
+
+// 定義列寬的 mixin
+@mixin col($fraction, $total-columns) {
+  @if type-of($fraction) != "number" or type-of($total-columns) != "number" {
+    @error "列寬 mixin 需要數字作為參數。";
+  }
+
+  width: percentage($fraction, $total-columns);
+  height: auto;
+}
+
+// 遞歸生成列寬類別的 mixin
+@mixin generate-columns($name, $max-columns, $current: 0, $step: 1) {
+  @if $current <= $max-columns {
+    $fraction: $current;
+
+    // 生成 .q-col-#{$name}-#{$current} 類別
+    .q-col-#{$name}-#{$current} {
+      @media (min-width: map-get($sizes, $name)) {
+        @include col($fraction, $max-columns);
+      }
+    }
+
+    // 生成 .q-col-#{$current} 類別
+    .q-col-#{$current} {
+      @media (min-width: map-get($sizes, $name)) {
+        @include col($fraction, $max-columns);
+      }
+    }
+
+    @include generate-columns($name, $max-columns, $current + $step, $step);
+  }
+}
+
+// 自動生成無限列寬的類別
+@mixin generate-infinite-columns($max-columns, $step: 1) {
+  @if type-of($max-columns) != "number" or type-of($step) != "number" {
+    @error "自動生成無限列寬需要數字作為參數。";
+  }
+
+  @each $name, $size in $sizes {
+    @include generate-columns($name, $max-columns, 0, $step);
+  }
+}
+
+// 根據需要生成無限列寬的類別，假設需要生成到 100 列，步進值為 1
+@include generate-infinite-columns(100, 1);

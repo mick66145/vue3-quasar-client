@@ -1,0 +1,31 @@
+{
+  "g": {
+    "system": {
+      "system-name": "ClientFrontend Base"
+    },
+    "dialog": {
+      "default-title": "Title"
+    },
+    "btn": {
+      "edit": "Edit",
+      "add": "Add",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "save": "Save",
+      "confirm": "Confirm",
+      "go-back": "GoBack",
+      "reset-password": "ResetPassword",
+      "reset": "Reset",
+      "view": "View",
+      "dowload": "Dowload",
+      "line": "LineLogIn",
+      "copy": "Copy",
+      "google": "Google Login"
+    },
+    "prefix": {
+      "edit": "Edit",
+      "add": "Add",
+      "view": "View"
+    }
+  }
+}

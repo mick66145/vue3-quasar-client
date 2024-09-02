@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "CommonJS",
+        "baseUrl": "./",
+        "jsx": "preserve",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.vue",
+        "src/**/*.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        ".env.*",
+    ]
+}
