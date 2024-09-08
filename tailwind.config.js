@@ -20,6 +20,18 @@ export default {
           focus: 'var(--color-func-focus)',
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              'text-decoration': 'none',
+            },
+            hr: {
+              margin: 0,
+            },
+          },
+        },
+      },
     },
     screens: {
       xs: '0',
