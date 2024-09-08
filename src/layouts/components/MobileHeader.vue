@@ -8,9 +8,9 @@
           src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
         />
       </q-avatar>
-      <q-btn flat no-caps no-wrap to="/">
+      <base-flat-button no-wrap to="/" color="white">
         <q-toolbar-title shrink> {{ $t('g.system.system-name') }}</q-toolbar-title>
-      </q-btn>
+      </base-flat-button>
       <base-icon-button
         class="right-3 absolute "
         icon="menu"
