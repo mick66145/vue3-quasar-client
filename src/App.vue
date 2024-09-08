@@ -1,6 +1,6 @@
 <template>
   <message-dialog />
-  <router-view />
+  <router-view class="prose max-w-none" />
 </template>
 
 <script>
