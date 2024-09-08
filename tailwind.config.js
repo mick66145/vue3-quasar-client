@@ -1,8 +1,8 @@
-const colors = require('tailwindcss/colors');
+const colors = require('tailwindcss/colors')
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{html,js,ts,jsx,tsx,vue,svelte}",
+    './index.html',
+    './src/**/*.{html,js,ts,jsx,tsx,vue,svelte}',
   ],
   theme: {
     extend: {
@@ -28,13 +28,14 @@ export default {
       lg: '992px',
       xl: '1200px',
       '2xl': '1400px',
-      'lt-sm': {'max': '576px'},
-      'lt-md': {'max': '768px'},
-      'lt-lg': {'max': '992px'},
-      'lt-xl': {'max': '1200px'},
-      'lt-2xl': {'max': '1400px'},
+      'lt-sm': { max: '576px' },
+      'lt-md': { max: '768px' },
+      'lt-lg': { max: '992px' },
+      'lt-xl': { max: '1200px' },
+      'lt-2xl': { max: '1400px' },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
-
