@@ -4,7 +4,8 @@
       "system-name": "ClientFrontend Base"
     },
     "dialog": {
-      "default-title": "標題"
+      "default-title": "標題",
+      "delete-title": "刪除"
     },
     "btn": {
       "edit": "編輯",
@@ -20,12 +21,81 @@
       "dowload": "下載",
       "line": "使用Line登入",
       "copy": "複製",
-      "google": "Google 登入"
+      "google": "Google 登入",
+      "upload": "上傳",
+      "scanner-barcode": "掃描Barcode",
+      "scanner-qr-code": "掃描QRcode",
+      "analytics": "數據分析"
+    },
+    "pagination": {
+      "item-count": "共 {total} 項",
+      "go-to": "前往",
+      "page": "頁"
     },
     "prefix": {
       "edit": "編輯",
       "add": "新增",
       "view": "查看"
+    },
+    "common": {
+      "input": "請輸入{field}",
+      "select": "請選擇{field}",
+      "operate": "操作",
+      "enable": "啟用",
+      "un-enable": "不啟用",
+      "account": "帳號",
+      "password": "密碼",
+      "old-password": "舊密碼",
+      "new-password": "新密碼",
+      "confirm-password": "確認新密碼",
+      "email": "電子信箱",
+      "phone": "手機",
+      "remark": "備註",
+      "sequence": "排序",
+      "is-enable": "啟用/不啟用",
+      "created-at": "建立時間",
+      "uniform-number": "統一編號",
+      "fax": "傳真",
+      "address": "地址",
+      "extension-number": "分機號碼",
+      "tel": "電話",
+      "keyword": "關鍵字",
+      "credit-card": "信用卡卡號",
+      "credit-card-expired-date": "到期日",
+      "identification-number": "身分證號碼",
+      "area": "鄉鎮區",
+      "city": "縣市",
+      "birthday": "生日",
+      "barcode": "條碼",
+      "locale": "語系",
+      "sourceip": "來源IP",
+      "state": "狀態",
+      "image": "圖片",
+      "placeholder": "Placeholder",
+      "sex": "性別",
+      "serial-number": "編號"
+    },
+    "validation": {
+      "required": "{attribute}必填",
+      "email": "請輸入有效的電子郵件地址",
+      "min-value": "{attribute}必需大於{min}",
+      "max-value": "{attribute}必需小於{max}",
+      "min-length": "長度不可少於{min}",
+      "max-length": "長度不可超過{max}",
+      "same-as": "必需與{field}相符",
+      "alpha": "格式錯誤，只允許英文字母",
+      "credit-card": "格式錯誤，請輸入正確的信用卡卡號格式",
+      "credit-card-expired-date": "格式錯誤，請輸入正確的信用卡到期日",
+      "identification-number": "格式錯誤，請輸入正確的身分證字號格式",
+      "gui-number": "格式錯誤，請輸入正確的統一編號格式",
+      "tel": "格式錯誤，只允許數字、連字符、左括號、右括號、加號",
+      "file-format": "檔案格式錯誤",
+      "image-format": "圖片格式錯誤",
+      "password": "需為8至255個字元長度，包含數字、英文字母和特殊符號",
+      "url": "無效的網址，確保URL格式正確",
+      "day-is-same-or-after": "必需比${min}晚",
+      "day-is-same-or-before": "必需比${max}早",
+      "default-error-message": "欄位未填寫正確請檢查"
     }
   }
 }

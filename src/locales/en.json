@@ -4,7 +4,8 @@
       "system-name": "ClientFrontend Base"
     },
     "dialog": {
-      "default-title": "Title"
+      "default-title": "Title",
+      "delete-title": "Delete"
     },
     "btn": {
       "edit": "Edit",
@@ -20,12 +21,84 @@
       "dowload": "Dowload",
       "line": "LineLogIn",
       "copy": "Copy",
-      "google": "Google Login"
+      "google": "Google Login",
+      "upload": "Upload",
+      "scanner-barcode": "ScannerBarcode",
+      "scanner-qr-code": "ScannerQRcode",
+      "analytics": "Analytics"
+    },
+    
+    "pagination": {
+      "item-count": "Total {total} Items",
+      "go-to": "Go To",
+      "page": "Page"
     },
     "prefix": {
       "edit": "Edit",
       "add": "Add",
       "view": "View"
+    },
+    "common": {
+      "input": "Please Enter {field}",
+      "select": "Please Select {field}",
+      "operate": "Operate",
+      "enable": "Enable",
+      "un-enable": "UnEnable",
+      "account": "Account",
+      "password": "Password",
+      "old-password": "OldPassword",
+      "new-password": "NewPassword",
+      "confirm-password": "ConfirmPassword",
+      "email": "Email",
+      "phone": "Phone",
+      "remark": "Remark",
+      "sequence": "Sequence",
+      "is-enable": "Enabled/UnEnabled",
+      "created-at": "CreatedAt",
+      "uniform-number": "UniformNumber",
+      "fax": "Fax",
+      "address": "Address",
+      "extension-number": "ExtensionNumber",
+      "tel": "Tel",
+      "keyword": "Keyword",
+      "credit-card": "CreditCard",
+      "credit-card-expired-date": "CreditCardExpiredDate",
+      "identification-number": "IdentificationNumber",
+      "area": "Area",
+      "city": "City",
+      "birthday": "Birthday",
+      "barcode": "Barcode",
+      "locale": "Locale",
+      "sourceip": "SourceIp",
+      "state": "State",
+      "image": "Image",
+      "placeholder": "Placeholder",
+      "sex": "Sex",
+      "serial-number": "SerialNumber"
+    },
+    "validation": {
+      "required": "{attribute} Is Required",
+      "email": "Please enter a valid email address",
+      "min-value": "{attribute} must be at least {min}",
+      "max-value": "{attribute} must not exceed {max}",
+      "min-length": "The length must not be less than {min}",
+      "max-length": "The length must not exceed {max}",
+      "min-size": "The size does not meet the minimum upload size",
+      "max-size": "The size exceeds the allowable upload limit",
+      "same-as": "must match {field}",
+      "alpha": "This field may only contain letters and spaces",
+      "credit-card": "Please enter a valid credit card number",
+      "credit-card-expired-date": "Please enter a valid credit card expiration date",
+      "identification-number": "Please enter a valid identification number format",
+      "gui-number": "Please enter a valid GUI Number format",
+      "tel": "Please enter numbers, hyphens, parentheses, and plus signs",
+      "file-format": "Invalid file format",
+      "image-format": "Invalid file format",
+      "password": "Must be between 8 and 255 characters long and include numbers, letters, and special characters",
+      "url": "Invalid URL. Please ensure the URL format is correct",
+      "day-is-same-or-after": "Must be later than ${min}",
+      "day-is-same-or-before": "Must be earlier than ${max}",
+      "default-error-message": "Please check the fields; they are not filled out correctly"
     }
   }
 }
