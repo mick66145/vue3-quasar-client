@@ -71,6 +71,7 @@
       "locale": "Locale",
       "sourceip": "SourceIp",
       "state": "State",
+      "date-range": "DateRange",
       "image": "Image",
       "placeholder": "Placeholder",
       "sex": "Sex",

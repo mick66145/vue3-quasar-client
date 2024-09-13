@@ -70,6 +70,7 @@
       "locale": "語系",
       "sourceip": "來源IP",
       "state": "狀態",
+      "date-range": "日期區間",
       "image": "圖片",
       "placeholder": "Placeholder",
       "sex": "性別",
