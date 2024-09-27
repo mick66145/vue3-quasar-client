@@ -7,14 +7,14 @@
           v-for="(fileItem, fileIndex) in observeValue"
           :key="fileIndex"
           v-ripple
-          v-downloadUrl="{url:preview(fileItem), name:fileItem.file.filename}"
+          v-downloadUrl="{url:preview(fileItem), name:fileItem.file_info.filename}"
           clickable
         >
           <q-item-section avatar top>
             <q-avatar icon="assignment" color="grey" text-color="white" />
           </q-item-section>
           <q-item-section>
-            <q-item-label lines="1">{{ fileItem.file.filename }}</q-item-label>
+            <q-item-label lines="1">{{ fileItem.file_info.filename }}</q-item-label>
           </q-item-section>
           <q-item-section side>
             <q-btn
@@ -70,7 +70,7 @@ export default defineComponent({
       },
     })
     const preview = computed(() => (data) => {
-      const { blobURL, url, base64, filename } = data.file || {}
+      const { blobURL, url, base64, filename } = data.file_info || {}
       if (blobURL) return blobURL
       if (url) return url
       if (base64) return base64
@@ -83,7 +83,7 @@ export default defineComponent({
       const state = {
         alt: '',
         title: '',
-        file: {
+        file_info: {
           blobURL: URL.createObjectURL(file),
           raw: file,
           base64: base64,

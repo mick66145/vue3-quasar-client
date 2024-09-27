@@ -7,7 +7,6 @@
     :size="size"
     :label="label"
   >
-    <slot name="default" />
     <template #loading>
       <q-spinner-hourglass size="0.75em" />
     </template>

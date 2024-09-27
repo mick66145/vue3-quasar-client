@@ -45,7 +45,7 @@ export default defineComponent({
   props: {
     modelValue: { type: String },
     label: { type: String },
-    placeholder: { type: String, default: '年/月/日' },
+    placeholder: { type: String, default: '時:分:秒' },
     withSeconds: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
   },

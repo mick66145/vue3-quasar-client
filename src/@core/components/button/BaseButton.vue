@@ -11,7 +11,7 @@
     :size="size"
     :disable="observeDisable"
   >
-    <slot name="default" />
+    <slot />
     <template #loading>
       <q-spinner-hourglass size="0.75em" />
     </template>

@@ -4,11 +4,13 @@
     :title="title"
     :sortable="sortable"
     :width="width"
+    :min-width="min_width"
   >
     <template #default="{ row }">
       <base-image
         :src="getValueByPath(row,field)"
         :use-authorization="useAuthorization"
+        :ratio="ratio"
       />
     </template>
   </vxe-column>
@@ -23,8 +25,10 @@ export default defineComponent({
     field: { type: String },
     title: { type: String },
     sortable: { type: Boolean, default: false },
-    width: { type: [Number, String], default: 200 },
+    width: { type: [Number, String] },
+    minWidth: { type: [Number, String]},
     useAuthorization: { type: Boolean, default: false },
+    ratio: { type: Number, default: 1 },
   },
   setup () {
     return {
@@ -33,5 +37,5 @@ export default defineComponent({
   },
 })
 </script>
-<style lang="postcss" scoped>
-</style>
+
+<style lang="postcss" scoped></style>

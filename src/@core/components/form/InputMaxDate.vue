@@ -1,17 +1,16 @@
 <template>
   <input-date
     v-model="observeValue"
-    :placeholder="observePlaceholder"
-    :label="observeLabel"
+    :label="label"
+    :placeholder="placeholder"
     :max="max"
     :required="required"
   />
 </template>
 
 <script>
-import { defineComponent, computed, toRefs } from 'vue-demi'
+import { defineComponent } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
-import { i18n } from '@/plugins/i18n'
 import { convertDateTime } from '@/utils/data-convert'
 
 export default defineComponent({
@@ -25,21 +24,10 @@ export default defineComponent({
   emits: ['update:modelValue'],
   setup (props, { emit }) {
     // data
-    const { label, placeholder } = toRefs(props)
     const observeValue = useVModel(props, 'modelValue', emit)
-
-    //computed
-    const observeLabel = computed(() => {
-      return label.value ? label.value : i18n.global.t('g.common.birthday')
-    })
-    const observePlaceholder = computed(() => {
-      return placeholder.value ? placeholder.value : i18n.global.t('g.common.select', { field: i18n.global.t('g.common.birthday') })
-    })
 
     return {
       observeValue,
-      observeLabel,
-      observePlaceholder,
     }
   },
 })

@@ -8,7 +8,7 @@
       <!-- <div class="row q-ma-sm q-gutter-sm justify-center">
         <input-select
           v-model="selectedCalendar"
-          class="lt-sm:w-full"
+          class="<sm:w-full"
           label="月曆模式"
           dense
           option-value="value"
@@ -17,7 +17,7 @@
         />
         <input-select
           v-model="selectedView"
-          class="lt-sm:w-full"
+          class="<sm:w-full"
           label="月曆顯示"
           dense
           option-value="value"

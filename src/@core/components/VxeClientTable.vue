@@ -157,6 +157,9 @@ export default defineComponent({
     const getFullDataCount = () => {
       return getTableData().fullData.length
     }
+    const insert = async (obj) => {
+      await dataTable.value.insert(obj)
+    }
     const insertAt = async (obj, row) => {
       await dataTable.value.insertAt(obj, row)
     }
@@ -251,6 +254,7 @@ export default defineComponent({
       getTableData,
       getFullData,
       getAllCheckboxRecordsCount,
+      insert,
       insertAt,
       insertAtLast,
       updateRow,

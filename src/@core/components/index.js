@@ -13,6 +13,8 @@ import InputSelect from './form/InputSelect.vue'
 import InputMultipleSelect from './form/InputMultipleSelect.vue'
 import InputPassword from './form/InputPassword.vue'
 import InputDate from './form/InputDate.vue'
+import InputMaxDate from './form/InputMaxDate.vue'
+import InputEditor from './form/InputEditor/InputEditor.vue'
 import InputImageUpload from './form/InputImageUpload.vue'
 import InputImage from './form/InputImage.vue'
 import InputOptionGroup from './form/InputOptionGroup.vue'
@@ -91,6 +93,8 @@ import BaseLink from './link/BaseLink.vue'
 import BaseButtonGroup from './button-group/BaseButtonGroup.vue'
 import BaseTabs from './tabs/BaseTabs.vue'
 import LanguageTabs from './tabs/LanguageTabs.vue'
+import VerticalTabs from './tabs/VerticalTabs.vue'
+import ResponsiveTabs from './tabs/ResponsiveTabs.vue'
 import BaseDialog from './dialog/BaseDialog.vue'
 import BaseCenterDialog from './dialog/BaseCenterDialog.vue'
 import ImagePreviewDialog from './dialog/ImagePreviewDialog.vue'
@@ -110,12 +114,18 @@ import FileUploader from './uploader/FileUploader.vue'
 import BaseTooltip from './tooltip/BaseTooltip.vue'
 import SelectTree from './tree/SelectTree.vue'
 import ChipColumn from './table-column/ChipColumn.vue'
+import ImageColumn from './table-column/ImageColumn.vue'
+import ImageMultipleColumn from './table-column/ImageMultipleColumn.vue'
 import LanguageSimpleDynamicForm from './simple-dynamic-form/LanguageSimpleDynamicForm.vue'
 import SimpleDynamicForm from './simple-dynamic-form/SimpleDynamicForm.vue'
 import IconListItem from './list-item/IconListItem.vue'
 import ImageListItem from './list-item/ImageListItem.vue'
 import TextListItem from './list-item/TextListItem.vue'
+import BaseSplitter from './splitter/BaseSplitter.vue'
+import ResponsiveSplitter from './splitter/ResponsiveSplitter.vue'
+import BaseTabPanels from './tab-panels/BaseTabPanels.vue'
 import LangSelect from './LangSelect.vue'
+import ScShadow from './shadow/ScShadow.vue'
 import BasePage from './page/BasePage.vue'
 import PaddingPage from './page/PaddingPage.vue'
 import BasePopover from './popover/BasePopover.vue'
@@ -152,6 +162,8 @@ export default {
     app.component('InputMultipleSelect', InputMultipleSelect)
     app.component('InputPassword', InputPassword)
     app.component('InputDate', InputDate)
+    app.component('InputMaxDate', InputMaxDate)
+    app.component('InputEditor', InputEditor)
     app.component('InputImageUpload', InputImageUpload)
     app.component('InputImage', InputImage)
     app.component('InputOptionGroup', InputOptionGroup)
@@ -230,6 +242,8 @@ export default {
     app.component('BaseButtonGroup', BaseButtonGroup)
     app.component('BaseTabs', BaseTabs)
     app.component('LanguageTabs', LanguageTabs)
+    app.component('VerticalTabs', VerticalTabs)
+    app.component('ResponsiveTabs', ResponsiveTabs)
     app.component('BaseDialog', BaseDialog)
     app.component('BaseCenterDialog', BaseCenterDialog)
     app.component('ImagePreviewDialog', ImagePreviewDialog)
@@ -250,11 +264,16 @@ export default {
     app.component('BasePopover', BasePopover)
     app.component('SelectTree', SelectTree)
     app.component('ChipColumn', ChipColumn)
+    app.component('ImageColumn', ImageColumn)
+    app.component('ImageMultipleColumn', ImageMultipleColumn)
     app.component('SimpleDynamicForm', SimpleDynamicForm)
     app.component('LanguageSimpleDynamicForm', LanguageSimpleDynamicForm)
     app.component('IconListItem', IconListItem)
     app.component('ImageListItem', ImageListItem)
     app.component('TextListItem', TextListItem)
+    app.component('BaseSplitter', BaseSplitter)
+    app.component('ResponsiveSplitter', ResponsiveSplitter)
+    app.component('BaseTabPanels', BaseTabPanels)
     app.component('LangSelect', LangSelect)
     app.component('BasePage', BasePage)
     app.component('PaddingPage', PaddingPage)

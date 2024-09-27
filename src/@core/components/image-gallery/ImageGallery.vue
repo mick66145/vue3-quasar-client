@@ -73,7 +73,7 @@ export default defineComponent({
       },
     })
     const preview = computed(() => (data) => {
-      const { blobURL, url, base64, filename } = data.image || {}
+      const { blobURL, url, base64, filename } = data.file_info || {}
       if (blobURL) return blobURL
       if (url) return url
       if (base64) return base64
@@ -95,7 +95,7 @@ export default defineComponent({
           alt: '',
           title: '',
           sequence: 0,
-          image: {
+          file_info: {
             blobURL: URL.createObjectURL(file),
             raw: file,
             base64: base64,

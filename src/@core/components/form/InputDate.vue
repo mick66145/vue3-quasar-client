@@ -98,7 +98,7 @@ export default defineComponent({
     const ruleList = computed(() => {
       const rule = []
       min.value && rule.push(vuelidate.dayIsSameOrAfter(i18n.global.t('g.validation.day-is-same-or-after', { min: min.value })))
-      max.value && rule.push(vuelidate.dayIsSameOrBefore(i18n.global.t('g.validation.day-is-same-or-ㄖefore', { max: max.value })))
+      max.value && rule.push(vuelidate.dayIsSameOrBefore(i18n.global.t('g.validation.day-is-same-or-before', { max: max.value })))
       return rule.concat(rules.value)
     })
 
