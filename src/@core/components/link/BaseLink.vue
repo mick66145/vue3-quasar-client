@@ -6,6 +6,9 @@
     :color="color"
     :label="label"
     :class="observeClass"
+    :to="to"
+    :href="href"
+    :target="target"
     @click.stop
   />
 </template>
@@ -19,6 +22,9 @@ export default defineComponent({
     color: { type: String, default: 'primary' },
     size: { type: String },
     underline: { type: Boolean, default: true },
+    to: { type: String },
+    href: { type: String },
+    target: { type: String, default: '_blank' },
   },
   setup (props) {
     const observeClass = computed(() => {

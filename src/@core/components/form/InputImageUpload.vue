@@ -131,6 +131,7 @@ export default defineComponent({
         blobURL: blobURL,
         raw: file,
         base64: base64,
+        filename: file.name,
       }
       const { image } = state
       observeValue.value = { ...image }

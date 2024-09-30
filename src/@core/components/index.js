@@ -52,6 +52,9 @@ import InputRadioOptionGroup from './form/InputRadioOptionGroup.vue'
 import InputRadioOtherOptionGroup from './form/InputRadioOtherOptionGroup.vue'
 import InputEsign from './form/InputEsign.vue'
 import InputNumberRange from './form/InputNumberRange.vue'
+import InputTimeRange from './form/InputTimeRange.vue'
+import InputPrioritySelect from './form/InputPrioritySelect.vue'
+import InputFrequencySelect from './form/InputFrequencySelect.vue'
 import BaseButton from './button/BaseButton.vue'
 import AddButton from './button/AddButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
@@ -90,6 +93,8 @@ import SelectedChip from './chip/SelectedChip.vue'
 import SelectedChipOption from './chip/SelectedChipOption.vue'
 import BaseImage from './image/BaseImage.vue'
 import BaseLink from './link/BaseLink.vue'
+import FileLink from './link/FileLink.vue'
+import ImageLink from './link/ImageLink.vue'
 import BaseButtonGroup from './button-group/BaseButtonGroup.vue'
 import BaseTabs from './tabs/BaseTabs.vue'
 import LanguageTabs from './tabs/LanguageTabs.vue'
@@ -200,6 +205,9 @@ export default {
     app.component('InputRadioOtherOptionGroup', InputRadioOtherOptionGroup)
     app.component('InputEsign', InputEsign)
     app.component('InputNumberRange', InputNumberRange)
+    app.component('InputTimeRange', InputTimeRange)
+    app.component('InputPrioritySelect', InputPrioritySelect)
+    app.component('InputFrequencySelect', InputFrequencySelect)
     app.component('BaseButton', BaseButton)
     app.component('AddButton', AddButton)
     app.component('DeleteButton', DeleteButton)
@@ -238,6 +246,8 @@ export default {
     app.component('SelectedChipOption', SelectedChipOption)
     app.component('BaseImage', BaseImage)
     app.component('BaseLink', BaseLink)
+    app.component('FileLink', FileLink)
+    app.component('ImageLink', ImageLink)
     app.component('BaseButtonGroup', BaseButtonGroup)
     app.component('BaseTabs', BaseTabs)
     app.component('LanguageTabs', LanguageTabs)
