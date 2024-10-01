@@ -10,7 +10,7 @@ export default function useServerDataTable ({
   callback = () => {},
 }) {
   const { setSessionStorage, getSessionStorage } = useSessionStorage()
-
+  
   let sessionStorage = getSessionStorage(sessionStorageKey)
   const search = reactive({})
   const data = ref([])
@@ -42,6 +42,10 @@ export default function useServerDataTable ({
     search.page = 1
     usePageSize && (search.page_size = 10)
     setSessionStorage(sessionStorageKey, { search })
+    setCallback()
+  }
+
+  const onRefresh = () => {
     setCallback()
   }
 
@@ -94,5 +98,6 @@ export default function useServerDataTable ({
     onChangePageSize,
     onChangeFilter,
     onReset,
+    onRefresh,
   }
 }
