@@ -124,12 +124,10 @@ export default defineComponent({
   .input-image-upload-actions {
     @apply h-full w-full;
     @apply top-0 left-0 absolute;
-    @apply text-white;
-    @apply opacity-0;
+    @apply text-white text-opacity-0;
     &:hover {
-      @apply opacity-100;
-
-      /* @apply bg-dark-500/50 */;
+      @apply bg-gray-800 bg-opacity-50;
+      @apply text-opacity-100;
     }
     &::after {
       display: inline-block;
