@@ -54,7 +54,7 @@ import { i18n } from '@/plugins/i18n'
 
 export default defineComponent({
   props: {
-    label: { type: String},
+    label: { type: String },
     modelValue: { type: String },
     rules: { type: Array, default () { return [] } },
     placeholder: { type: String },

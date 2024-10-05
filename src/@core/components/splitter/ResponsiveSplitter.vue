@@ -13,24 +13,24 @@
 </template>
 
 <script>
-import { defineComponent, computed } from "vue-demi";
+import { defineComponent, computed } from 'vue-demi'
 import useScreen from '@/hooks/useScreen'
 
 export default defineComponent({
-  setup() {
+  setup () {
     // data
     const { deviceType } = useScreen({})
 
     // computed
     const horizontal = computed(() => {
-      return deviceType.value === 'mobile' ? true : false
+      return deviceType.value === 'mobile'
     })
 
     return {
-      horizontal
-    };
+      horizontal,
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped></style>

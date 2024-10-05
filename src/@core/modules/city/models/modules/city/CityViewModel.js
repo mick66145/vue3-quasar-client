@@ -9,10 +9,10 @@ export const CityViewModel = (item) => {
   const viewModel = (item) => {
     const cityObj = {
       ...CityModel(item),
-      ...City()
-    };
-    return cityObj;
-  };
+      ...City(),
+    }
+    return cityObj
+  }
 
-  return viewModel(item);
+  return viewModel(item)
 }

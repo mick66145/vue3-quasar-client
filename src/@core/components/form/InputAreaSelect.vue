@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, computed , onMounted, toRefs, watch } from 'vue-demi'
+import { defineComponent, ref, computed, onMounted, toRefs, watch } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
 import { AreaResource } from '@core/modules/area/api'
 import { i18n } from '@/plugins/i18n'
@@ -34,7 +34,7 @@ export default defineComponent({
 
     // mounted
     onMounted(() => {
-      if (cityId.value) {callReadListFetch()}
+      if (cityId.value) { callReadListFetch() }
     })
 
     // computed
@@ -48,12 +48,12 @@ export default defineComponent({
     // methods
     const fetchData = () => {
       const query = { city_id: cityId.value }
-      return  areaResource.list({query}).then((res) => {
+      return areaResource.list({ query }).then((res) => {
         areaList.value = []
         areaList.value = res.list
       })
     }
-    const clearData = () => { areaList.value = []}
+    const clearData = () => { areaList.value = [] }
 
     // use
     const { callReadListFetch } = useCRUD({

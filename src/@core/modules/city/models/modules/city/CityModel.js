@@ -1,7 +1,7 @@
 
 const City = () => ({
-  id : null,
-  name : null,
+  id: null,
+  name: null,
 })
 
 export const CityModel = (item = null) => {
@@ -9,10 +9,10 @@ export const CityModel = (item = null) => {
     return {
       id: item?.id || null,
       name: item?.name || null,
-    };
-  };
+    }
+  }
 
-  return model(item||City());
+  return model(item || City())
 }
 
 export default CityModel

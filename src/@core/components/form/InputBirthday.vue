@@ -18,7 +18,7 @@ export default defineComponent({
   props: {
     modelValue: { type: [String, Number] },
     label: { type: String },
-    placeholder: { type: String},
+    placeholder: { type: String },
     max: { type: [String], default: convertDateTime() },
     required: { type: Boolean, default: false },
   },
@@ -28,7 +28,7 @@ export default defineComponent({
     const { label, placeholder } = toRefs(props)
     const observeValue = useVModel(props, 'modelValue', emit)
 
-    //computed
+    // computed
     const observeLabel = computed(() => {
       return label.value ? label.value : i18n.global.t('g.common.birthday')
     })

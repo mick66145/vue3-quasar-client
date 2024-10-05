@@ -1,14 +1,14 @@
 <template>
   <div class="row q-col-gutter-x-md q-col-gutter-y-xs">
-    <div :class="esignCol" v-if="!observeValue">
+    <div v-if="!observeValue" :class="esignCol">
       <esign
-        class="shadow-1"
         ref="esign"
+        class="shadow-1"
         :width="width"
         :height="height"
       />
     </div>
-    <div :class="imageCol" v-else>
+    <div v-else :class="imageCol">
       <base-image class="w-full" fit="fill" :height="imageHeight" :width="imageWidth" :src="uploadPreview" />
     </div>
     <div :class="actionCol">
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { defineComponent, ref , reactive , computed } from "vue-demi";
+import { defineComponent, ref, reactive, computed } from 'vue-demi'
 import useImgStorage from '@/hooks/useImgStorage'
 
 export default defineComponent({
@@ -35,17 +35,17 @@ export default defineComponent({
     esignCol: { type: String, default: 'col-12 col-md-10' },
     imageCol: { type: String, default: 'col-12 col-md-6 col-lg-6 col-xl-10' },
     actionCol: { type: String, default: 'col-12 col-md-2' },
-    imageWidth: { type: [Number, String]},
+    imageWidth: { type: [Number, String] },
     imageHeight: { type: [Number, String], default: '200px' },
   },
-  emits: ["update:modelValue"],
-  setup(props, { emit }) {
+  emits: ['update:modelValue'],
+  setup (props, { emit }) {
     // data
-    const esign = ref();
+    const esign = ref()
     const state = reactive({
       image: '',
     })
-    
+
     // computed
     const observeValue = computed({
       get () {
@@ -57,7 +57,7 @@ export default defineComponent({
       },
     })
     const uploadPreview = computed(() => {
-      const { blobURL, url, base64 , filename } = state.image || {}
+      const { blobURL, url, base64, filename } = state.image || {}
       if (blobURL) return blobURL
       if (url) return url
       if (base64) return base64
@@ -66,15 +66,15 @@ export default defineComponent({
 
     // methods
     const confirm = async () => {
-      const base64 = await esign.value.generateAsBase();
-      setImage(null,null,base64)
-    };
+      const base64 = await esign.value.generateAsBase()
+      setImage(null, null, base64)
+    }
     const reset = () => {
-      esign.value.reset();
-    };
+      esign.value.reset()
+    }
     const regenerate = () => {
-      emit("update:modelValue", null);
-    };
+      emit('update:modelValue', null)
+    }
     const setImage = (blobURL, file, base64) => {
       state.image = {
         blobURL: blobURL,
@@ -87,7 +87,7 @@ export default defineComponent({
 
     // use
     const { getImageSrc } = useImgStorage()
-    
+
     return {
       esign,
       observeValue,
@@ -95,9 +95,9 @@ export default defineComponent({
       confirm,
       reset,
       regenerate,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="scss" scoped></style>

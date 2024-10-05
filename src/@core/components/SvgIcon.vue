@@ -1,7 +1,13 @@
 <template>
-  <svg class="svg-icon" :class="{ 'icon-spin': spin }" :width="size || width" :height="size || height" :style="{
-    color: color
-  }">
+  <svg
+    class="svg-icon"
+    :class="{ 'icon-spin': spin }"
+    :width="size || width"
+    :height="size || height"
+    :style="{
+      color: color
+    }"
+  >
     <use :xlink:href="`#icon-${icon}`" />
   </svg>
 </template>

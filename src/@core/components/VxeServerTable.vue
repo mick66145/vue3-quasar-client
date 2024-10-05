@@ -185,7 +185,7 @@ export default defineComponent({
     }
     const updateRow = (obj, row) => {
       const fullData = getFullData()
-      dataTable.value.setRow(fullData[row],obj)
+      dataTable.value.setRow(fullData[row], obj)
     }
     const remove = (row) => {
       dataTable.value.remove(row)

@@ -77,8 +77,8 @@ const countryCodeResource = CountryCodeResource({})
 export default defineComponent({
   props: {
     modelValue: { type: [String, Number, null] },
-    label: { type: String},
-    placeholder: { type: String},
+    label: { type: String },
+    placeholder: { type: String },
     required: { type: Boolean, default: false },
   },
   emits: [
@@ -105,7 +105,7 @@ export default defineComponent({
 
     // methods
     const fetchData = async (query) => {
-      return await countryCodeResource.list({query}).then((res) => {
+      return await countryCodeResource.list({ query }).then((res) => {
         countryCodeList.value = []
         countryCodeList.value = res.list
       })

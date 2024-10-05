@@ -1,8 +1,7 @@
 <template>
   <vxe-column :field="field" :title="title" :sortable="sortable" :min-width="minWidth">
     <template #default="{ row }">
-      <base-chip :color="color" :text-color="textColor" :label="getValueByPath(row, field)">
-      </base-chip>
+      <base-chip :color="color" :text-color="textColor" :label="getValueByPath(row, field)" />
     </template>
   </vxe-column>
 </template>
@@ -20,9 +19,9 @@ export default defineComponent({
     color: { type: String },
     textColor: { type: String },
     icon: { type: String },
-    size: { type: String , default: 'lg' },
+    size: { type: String, default: 'lg' },
   },
-  setup() {
+  setup () {
     return {
       getValueByPath,
     }

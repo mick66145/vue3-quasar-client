@@ -15,9 +15,9 @@
       <q-list class="min-w-4rem w-full">
         <q-item
           v-for="(optionItem, optionIndex) in options"
-          clickable
-          v-close-popup
           :key="optionIndex"
+          v-close-popup
+          clickable
           @click="select(optionItem)"
         >
           <q-item-section>{{ optionLabelFn(optionItem) }}</q-item-section>
@@ -68,9 +68,9 @@
 </template>
 
 <script>
-import { defineComponent, ref, computed, toRefs } from "vue-demi";
-import { useVModel } from "@vueuse/core";
-import useCRUD from "@/hooks/useCRUD";
+import { defineComponent, ref, computed, toRefs } from 'vue-demi'
+import { useVModel } from '@vueuse/core'
+import useCRUD from '@/hooks/useCRUD'
 
 export default defineComponent({
   props: {
@@ -78,22 +78,22 @@ export default defineComponent({
     label: { type: String },
     placeholder: { type: String },
     emitValue: { type: Boolean, default: false },
-    transitionShow: { type: String, default: "scale" },
-    transitionHide: { type: String, default: "scale" },
-    optionLabel: { type: String, default: "name" },
-    optionValue: { type: String, default: "id" },
-    maxHeight: { type: String, default: "300px" },
+    transitionShow: { type: String, default: 'scale' },
+    transitionHide: { type: String, default: 'scale' },
+    optionLabel: { type: String, default: 'name' },
+    optionValue: { type: String, default: 'id' },
+    maxHeight: { type: String, default: '300px' },
     filterFetch: { type: Function },
     filterQuery: { type: [String, null, Object] },
-    filterKey: { type: [Array], default: ["keyword"] },
+    filterKey: { type: [Array], default: ['keyword'] },
   },
-  emits: ["update:modelValue"],
-  setup(props, { emit }) {
+  emits: ['update:modelValue'],
+  setup (props, { emit }) {
     // data
-    const menu = ref();
-    const { filterFetch, filterQuery, filterKey } = toRefs(props);
-    const observeValue = useVModel(props, "modelValue", emit);
-    const options = ref([]);
+    const menu = ref()
+    const { filterFetch, filterQuery, filterKey } = toRefs(props)
+    const observeValue = useVModel(props, 'modelValue', emit)
+    const options = ref([])
 
     // computed
     const searchValue = computed({
@@ -101,38 +101,39 @@ export default defineComponent({
         return observeValue.value ? optionValueFn(observeValue.value) : null
       },
       set (value) {
-        emit('update:modelValue', value);
+        emit('update:modelValue', value)
       },
     })
-    
+
     // methods
     const filterFn = async () => {
       if (filterFetch.value) {
-        const keyObj = filterKey.value.reduce((obj, element) => { obj[element] = observeValue.value;
-          return obj;
-        },{});
-        const query = {...filterQuery.value,...keyObj};
-        const [res] = await callReadListFetch(query);
+        const keyObj = filterKey.value.reduce((obj, element) => {
+          obj[element] = observeValue.value
+          return obj
+        }, {})
+        const query = { ...filterQuery.value, ...keyObj }
+        const [res] = await callReadListFetch(query)
         if (res.list.length > 0) {
-          options.value = [];
-          options.value = res.list;
-          menu.value.show();
+          options.value = []
+          options.value = res.list
+          menu.value.show()
         }
       }
-    };
+    }
     const optionValueFn = (item) => {
       return (item[props.optionValue] !== undefined || null) ? item[props.optionValue] : item
     }
     const optionLabelFn = (item) => {
       return (item[props.optionLabel] !== undefined || null) ? item[props.optionLabel] : item
     }
-    const search = () => filterFn();
-    const select = (item) => emit('update:modelValue',item);
-    
+    const search = () => filterFn()
+    const select = (item) => emit('update:modelValue', item)
+
     // use
     const { callReadListFetch } = useCRUD({
       readListFetch: filterFetch.value,
-    });
+    })
 
     return {
       menu,
@@ -142,9 +143,9 @@ export default defineComponent({
       search,
       select,
       optionLabelFn,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped>

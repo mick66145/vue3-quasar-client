@@ -33,13 +33,12 @@
     <template v-if="$slots.loading" #loading>
       <slot name="loading" />
     </template>
-
   </input-text>
 </template>
 
 <script>
-import { defineComponent, computed, toRefs} from "vue-demi";
-import { useVModel } from "@vueuse/core";
+import { defineComponent, computed, toRefs } from 'vue-demi'
+import { useVModel } from '@vueuse/core'
 import { i18n } from '@/plugins/i18n'
 
 export default defineComponent({
@@ -49,11 +48,11 @@ export default defineComponent({
     placeholder: { type: String },
     required: { type: Boolean, default: false },
   },
-  emits: ["update:modelValue"],
-  setup(props, { emit }) {
+  emits: ['update:modelValue'],
+  setup (props, { emit }) {
     // data
     const { label, placeholder } = toRefs(props)
-    const observeValue = useVModel(props, "modelValue", emit);
+    const observeValue = useVModel(props, 'modelValue', emit)
 
     // computed
     const observeLabel = computed(() => {
@@ -68,9 +67,9 @@ export default defineComponent({
       observeLabel,
       observePlaceholder,
       emit,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped></style>

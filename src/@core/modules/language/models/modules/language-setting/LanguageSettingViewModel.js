@@ -9,10 +9,10 @@ export const LanguageSettingViewModel = (item) => {
   const viewModel = (item) => {
     const languageSettingObj = {
       ...LanguageSettingModel(item),
-      ...LanguageSetting()
-    };
-    return languageSettingObj;
-  };
+      ...LanguageSetting(),
+    }
+    return languageSettingObj
+  }
 
-  return viewModel(item);
+  return viewModel(item)
 }

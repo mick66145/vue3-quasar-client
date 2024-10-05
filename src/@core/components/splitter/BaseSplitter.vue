@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { defineComponent, computed, toRefs } from "vue-demi";
+import { defineComponent, computed, toRefs } from 'vue-demi'
 import useScreen from '@/hooks/useScreen'
 
 export default defineComponent({
@@ -23,7 +23,7 @@ export default defineComponent({
     tabletSize: { type: Number, default: 15 },
     mobileSize: { type: Number, default: 20 },
   },
-  setup(props) {
+  setup (props) {
     // data
     const { desktopSize, tabletSize, mobileSize } = toRefs(props)
     const { deviceType } = useScreen({})
@@ -34,10 +34,10 @@ export default defineComponent({
     })
 
     return {
-      splitterModel
-    };
+      splitterModel,
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped></style>

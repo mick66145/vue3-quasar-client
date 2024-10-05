@@ -11,22 +11,22 @@
 </template>
 
 <script>
-import { defineComponent } from "vue-demi";
+import { defineComponent } from 'vue-demi'
 export default defineComponent({
   props: {
-    label: { type: String},
+    label: { type: String },
     color: { type: String, default: 'primary' },
     textColor: { type: String, default: 'white' },
     icon: { type: String },
-    size: { type: String , default: 'md' },
+    size: { type: String, default: 'md' },
     clickable: { type: Boolean, default: false },
     square: { type: Boolean, default: false },
   },
-  setup() {
+  setup () {
     return {
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped>

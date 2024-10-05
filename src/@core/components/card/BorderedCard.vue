@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import { defineComponent } from "vue-demi";
+import { defineComponent } from 'vue-demi'
 export default defineComponent({
-  setup() {
+  setup () {
     return {
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped></style>

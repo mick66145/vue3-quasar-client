@@ -1,16 +1,16 @@
 <template>
   <div class="row q-col-gutter-md">
     <div class="col-6">
-      <input-time class="w-full" v-model="observeValue.start_time" :required="required" />
+      <input-time v-model="observeValue.start_time" class="w-full" :required="required" />
     </div>
     <div class="col-6">
-      <input-time class="w-full" v-model="observeValue.end_time" :min="observeValue.start_time" :required="required" />
+      <input-time v-model="observeValue.end_time" class="w-full" :min="observeValue.start_time" :required="required" />
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent} from 'vue-demi'
+import { defineComponent } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
 export default defineComponent({
   props: {
@@ -20,7 +20,7 @@ export default defineComponent({
   emits: [
     'update:modelValue',
   ],
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     // data
     const observeValue = useVModel(props, 'modelValue', emit)
 

@@ -8,36 +8,35 @@
     :square="true"
     @update:selected="onSelected"
   />
-
 </template>
 
 <script>
-import { defineComponent, ref } from "vue-demi";
+import { defineComponent, ref } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
 export default defineComponent({
   props: {
-    modelValue: { type: Boolean , default: false },
-    label: { type: String},
-    val: { type: [String,Object,Number]},
-    color: { type: String , default: 'white' },
-    textColor: { type: String , default: 'primary' },
-    selectedColor: { type: String , default: 'primary' },
-    selectedTextColor: { type: String , default: 'white' },
+    modelValue: { type: Boolean, default: false },
+    label: { type: String },
+    val: { type: [String, Object, Number] },
+    color: { type: String, default: 'white' },
+    textColor: { type: String, default: 'primary' },
+    selectedColor: { type: String, default: 'primary' },
+    selectedTextColor: { type: String, default: 'white' },
   },
-  emits: ['update:selected','update:modelValue'],
-  setup(props,{emit}) {
-    //data
+  emits: ['update:selected', 'update:modelValue'],
+  setup (props, { emit }) {
+    // data
     const observeValue = useVModel(props, 'modelValue', emit)
 
-    const onSelected = (state) =>{
-      emit('update:selected', { state:state,val:props.val})
+    const onSelected = (state) => {
+      emit('update:selected', { state: state, val: props.val })
     }
     return {
       observeValue,
       onSelected,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped>

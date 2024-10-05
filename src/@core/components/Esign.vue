@@ -1,6 +1,13 @@
 <template>
-  <vue-esign ref="esign" :bgColor="bgColor" :width="width" :height="height" :isCrop="isCrop" :lineWidth="lineWidth"
-    :lineColor="lineColor" />
+  <vue-esign
+    ref="esign"
+    :bgColor="bgColor"
+    :width="width"
+    :height="height"
+    :isCrop="isCrop"
+    :lineWidth="lineWidth"
+    :lineColor="lineColor"
+  />
 </template>
 
 <script>
@@ -16,7 +23,7 @@ export default defineComponent({
     bgColor: { type: String, default: '' },
     isCrop: { type: Boolean, default: false },
   },
-  setup() {
+  setup () {
     // data
     const esign = ref()
 
@@ -27,8 +34,8 @@ export default defineComponent({
       const handleGenerate = () => {
         return new Promise((resolve) => {
           esign.value.generate()
-          .then(res => resolve(res))
-          .catch(err => resolve(null))
+            .then(res => resolve(res))
+            .catch(err => resolve(null))
         })
       }
       return await handleGenerate()
@@ -36,7 +43,7 @@ export default defineComponent({
     const generateAsBase = async () => await generate()
     const generateAsFile = async () => {
       const base64 = await generate()
-      return base64 ? base64ToFile(base64,'esign') : null
+      return base64 ? base64ToFile(base64, 'esign') : null
     }
 
     return {
@@ -44,7 +51,7 @@ export default defineComponent({
       reset,
       generate,
       generateAsBase,
-      generateAsFile
+      generateAsFile,
     }
   },
 })

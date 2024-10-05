@@ -1,10 +1,10 @@
 
 const LanguageSetting = {
   id: null,
-  name : null,
-  locale : 'zh-TW',
-  is_enable : true,
-  sequence : 0
+  name: null,
+  locale: 'zh-TW',
+  is_enable: true,
+  sequence: 0,
 }
 
 export const LanguageSettingModel = (item = null) => {
@@ -15,9 +15,9 @@ export const LanguageSettingModel = (item = null) => {
       locale: item?.locale || 'zh-TW',
       is_enable: item?.is_enable || true,
       sequence: item?.sequence || 0,
-    };
-    return languageSettingObj;
-  };
+    }
+    return languageSettingObj
+  }
 
-  return model(item || LanguageSetting);
+  return model(item || LanguageSetting)
 }

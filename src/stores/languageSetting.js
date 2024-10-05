@@ -8,11 +8,11 @@ export const useLanguageSetting = defineStore({
     languageSettingList: [],
   }),
   actions: {
-    getLanguageSetting() {
+    getLanguageSetting () {
       /* 如果有語言設定的api就使用以下註解 */
       return new Promise((resolve, reject) => {
-        const query = {orderby: 'sequence:asc,id:desc'}
-        this.languageSettingResource.list({query})
+        const query = { orderby: 'sequence:asc,id:desc' }
+        this.languageSettingResource.list({ query })
           .then(res => {
             const { list } = res
             this.languageSettingList = list

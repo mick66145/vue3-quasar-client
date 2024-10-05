@@ -15,14 +15,14 @@ export default defineComponent({
   props: {
     modelValue: { type: String },
   },
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     // data
     const observeValue = useVModel(props, 'modelValue', emit)
     const { deviceType } = useScreen({})
 
     // computed
     const vertical = computed(() => {
-      return deviceType.value === 'mobile' ? false : true
+      return deviceType.value !== 'mobile'
     })
 
     return {

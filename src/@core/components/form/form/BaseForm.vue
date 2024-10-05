@@ -13,27 +13,27 @@
 </template>
 
 <script>
-import { defineComponent, ref , computed , toRefs } from 'vue-demi'
+import { defineComponent, ref, computed, toRefs } from 'vue-demi'
 import { i18n } from '@/plugins/i18n'
 import useNotify from '@/hooks/useNotify'
 
 export default defineComponent({
   props: {
-    labelPosition: { type: String, default: "top" },
-    labelWidth: { type: String, default: "6rem" },
+    labelPosition: { type: String, default: 'top' },
+    labelWidth: { type: String, default: '6rem' },
   },
   emits: ['submit', 'reset', 'validation-success'],
   setup (props, { emit }) {
     // data
     const form = ref()
-    const { labelPosition } = toRefs(props);
+    const { labelPosition } = toRefs(props)
 
     // computed
     const formClass = computed(() => {
-      const ret = {};
-      ret[`q-form--label-${labelPosition.value}`]= true
-      return ret;
-    });
+      const ret = {}
+      ret[`q-form--label-${labelPosition.value}`] = true
+      return ret
+    })
 
     // methods
     const validate = () => {

@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import { defineComponent,computed,toRefs } from "vue-demi";
+import { defineComponent, computed, toRefs } from 'vue-demi'
 export default defineComponent({
   props: {
-    active: { type: Boolean , default: false },
+    active: { type: Boolean, default: false },
   },
-  setup(props) {
+  setup (props) {
     // data
     const { active } = toRefs(props)
 
@@ -24,10 +24,10 @@ export default defineComponent({
       return classObj
     })
     return {
-      observeClass
-    };
+      observeClass,
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped>

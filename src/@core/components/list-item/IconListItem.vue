@@ -9,7 +9,7 @@
         />
       </q-item-section>
       <q-item-section>
-        <q-item-label v-if="title" class="text-base">{{title}}</q-item-label>
+        <q-item-label v-if="title" class="text-base">{{ title }}</q-item-label>
         <q-item-label v-if="subtitle" caption lines="1">{{ subtitle }}</q-item-label>
       </q-item-section>
 
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { defineComponent } from "vue-demi";
+import { defineComponent } from 'vue-demi'
 
 export default defineComponent({
   props: {
@@ -30,10 +30,10 @@ export default defineComponent({
     subtitle: { type: String },
     active: { type: Boolean, default: false },
   },
-  setup() {
-    return {};
+  setup () {
+    return {}
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped>

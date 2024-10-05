@@ -5,8 +5,13 @@
         <div class="col-12">
           <stream-barcode-reader @decode="onDecode" />
           <base-form-item :label="`${$t('g.common.barcode')} *`">
-            <input-text v-model="data.state.barcode" class="full-width" :label="`${$t('g.common.barcode')}`"
-              :placeholder="$t('g.common.input', { field: $t('g.common.barcode') })" required />
+            <input-text
+              v-model="data.state.barcode"
+              class="full-width"
+              :label="`${$t('g.common.barcode')}`"
+              :placeholder="$t('g.common.input', { field: $t('g.common.barcode') })"
+              required
+            />
           </base-form-item>
         </div>
       </div>
@@ -15,13 +20,12 @@
 </template>
 
 <script>
-import { defineComponent } from "vue-demi";
-import useDialog from "@/hooks/useDialog";
+import { defineComponent } from 'vue-demi'
+import useDialog from '@/hooks/useDialog'
 
 export default defineComponent({
-  emits: ["confirm"],
-  setup(props, { emit }) {
-
+  emits: ['confirm'],
+  setup (props, { emit }) {
     // methods
     const onDecode = (result) => {
       data.state.barcode = result
@@ -29,20 +33,19 @@ export default defineComponent({
     const onConfirm = async () => {
       form.value.validate().then((success) => {
         if (success) {
-          emit("confirm", { data: { ...data.state } });
-          hideDialog();
+          emit('confirm', { data: { ...data.state } })
+          hideDialog()
         }
-      });
-    };
+      })
+    }
     const onHide = () => {
-      data.reset();
-    };
-
+      data.reset()
+    }
 
     // use
     const { form, data, isShowDialog, showDialog, hideDialog } = useDialog({
-      formData: { barcode: null }
-    });
+      formData: { barcode: null },
+    })
 
     return {
       form,
@@ -52,9 +55,9 @@ export default defineComponent({
       onConfirm,
       onHide,
       onDecode,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="postscss" scoped>

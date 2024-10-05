@@ -1,7 +1,7 @@
 <template>
   <q-tabs
-    no-caps
     v-model="observeValue"
+    no-caps
     :align="align"
     :active-color="activeColor"
     :outside-arrows="outsideArrows"

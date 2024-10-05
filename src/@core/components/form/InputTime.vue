@@ -1,6 +1,14 @@
 <template>
-  <input-text ref="inputTime" v-model="observeValue" :label="label" :placeholder="placeholder" :required="required"
-    inputmode="none" @focus="focus()" @blur="blur">
+  <input-text
+    ref="inputTime"
+    v-model="observeValue"
+    :label="label"
+    :placeholder="placeholder"
+    :required="required"
+    inputmode="none"
+    @focus="focus()"
+    @blur="blur"
+  >
     <template #append>
       <q-icon name="access_time" />
     </template>
@@ -9,10 +17,25 @@
     </template>
 
     <template #default>
-      <q-popup-proxy v-if="show" v-model="show" class="flex justify-center" transition-show="scale"
-        transition-hide="scale" persistent no-parent-event no-refocus no-focus>
-        <q-time v-model="observeValue" :with-seconds="withSeconds" :format24h="format24h" :hour-options="hourOptions"
-          :minute-options="minuteOptions" :options="observeOptions">
+      <q-popup-proxy
+        v-if="show"
+        v-model="show"
+        class="flex justify-center"
+        transition-show="scale"
+        transition-hide="scale"
+        persistent
+        no-parent-event
+        no-refocus
+        no-focus
+      >
+        <q-time
+          v-model="observeValue"
+          :with-seconds="withSeconds"
+          :format24h="format24h"
+          :hour-options="hourOptions"
+          :minute-options="minuteOptions"
+          :options="observeOptions"
+        >
           <div class="row items-center justify-end">
             <q-btn v-close-popup label="Close" color="primary" flat />
           </div>
@@ -40,8 +63,8 @@ export default defineComponent({
     max: { type: String },
   },
   emits: ['update:modelValue'],
-  setup(props, { emit }) {
-    //ref
+  setup (props, { emit }) {
+    // ref
     const inputTime = ref()
 
     // data
@@ -51,29 +74,28 @@ export default defineComponent({
 
     // computed
     const observeOptions = computed(() => {
-      const _options = options.value;
+      const _options = options.value
       const timeFn = (hour, minute) => {
-        const _min = min.value ? convertTimeToMinutes(min.value) : null;
-        const _max = max.value ? convertTimeToMinutes(max.value) : null;
-        const timeInMinutes = hour * 60 + minute;
-        if (_min === null && _max === null) return true;
+        const _min = min.value ? convertTimeToMinutes(min.value) : null
+        const _max = max.value ? convertTimeToMinutes(max.value) : null
+        const timeInMinutes = hour * 60 + minute
+        if (_min === null && _max === null) return true
         if (_min !== null && _max !== null) {
-          return timeInMinutes >= _min && timeInMinutes <= _max;
+          return timeInMinutes >= _min && timeInMinutes <= _max
         }
         if (_min !== null) {
-          if (timeInMinutes === Math.floor((_min / 60)) * 60) return true;
-          return timeInMinutes >= _min;
+          if (timeInMinutes === Math.floor((_min / 60)) * 60) return true
+          return timeInMinutes >= _min
         }
         if (_max !== null) {
-          if (timeInMinutes === Math.floor((_max / 60)) * 60) return true;
-          return timeInMinutes <= _max;
+          if (timeInMinutes === Math.floor((_max / 60)) * 60) return true
+          return timeInMinutes <= _max
         }
-        return true;
-      };
-      if (_options && _options.length > 0) return _options;
-      return timeFn;
-    });
-
+        return true
+      }
+      if (_options && _options.length > 0) return _options
+      return timeFn
+    })
 
     // methods
     const showPopup = (isShow) => {
@@ -94,8 +116,8 @@ export default defineComponent({
       }
     }
     const convertTimeToMinutes = (time) => {
-      const [hour, minute] = time.split(':').map(Number);
-      return hour * 60 + minute;
+      const [hour, minute] = time.split(':').map(Number)
+      return hour * 60 + minute
     }
 
     return {

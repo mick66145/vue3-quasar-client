@@ -19,8 +19,7 @@ export default defineComponent({
     underline: { type: Boolean, default: true },
     href: { type: String },
   },
-  setup(props) {
-
+  setup (props) {
     // computed
     const preview = computed(() => (data) => {
       const { blobURL, url, base64, filename } = data?.image || data || {}

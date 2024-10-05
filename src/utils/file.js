@@ -1,9 +1,9 @@
 
-export const base64ToFile = (base64, filename = "file") => {
-  const arrayBuffer = base64ToArrayBuffer(base64);
-  const fileExtension = getFileExtensionFromBase64(base64);
-  const blob = new Blob([arrayBuffer], { type: extractMimeType(base64) });
-  return new File([blob], `${filename}.${fileExtension}`, { type: blob.type });
+export const base64ToFile = (base64, filename = 'file') => {
+  const arrayBuffer = base64ToArrayBuffer(base64)
+  const fileExtension = getFileExtensionFromBase64(base64)
+  const blob = new Blob([arrayBuffer], { type: extractMimeType(base64) })
+  return new File([blob], `${filename}.${fileExtension}`, { type: blob.type })
 }
 
 /**
@@ -12,15 +12,14 @@ export const base64ToFile = (base64, filename = "file") => {
  * @returns {ArrayBuffer} - 對應的 ArrayBuffer
  */
 const base64ToArrayBuffer = (base64) => {
-
   /**
    * * 去掉 Base64 頭部信息
    * * @param {string} base64 - Base64 字符串
    * * @returns {string} - 去掉頭部信息後的 Base64 字符串
    * */
   const stripBase64Header = (base64) => {
-    const base64HeaderPattern = /^data:(.*?);base64,/;
-    return base64.replace(base64HeaderPattern, '');
+    const base64HeaderPattern = /^data:(.*?);base64,/
+    return base64.replace(base64HeaderPattern, '')
   }
 
   /**
@@ -29,7 +28,7 @@ const base64ToArrayBuffer = (base64) => {
   * @returns {string} - 去掉無效字符後的 Base64 字符串
   */
   const sanitizeBase64 = (base64) => {
-    return base64.replace(/\s+/g, '');
+    return base64.replace(/\s+/g, '')
   }
 
   /**
@@ -39,32 +38,32 @@ const base64ToArrayBuffer = (base64) => {
   */
   const padBase64 = (base64) => {
     while (base64.length % 4 !== 0) {
-      base64 += '=';
+      base64 += '='
     }
-    return base64;
+    return base64
   }
 
   try {
     // 去掉 Base64 頭部信息
-    base64 = stripBase64Header(base64);
+    base64 = stripBase64Header(base64)
 
     // 去掉無效字符
-    base64 = sanitizeBase64(base64);
+    base64 = sanitizeBase64(base64)
 
     // 補位處理
-    base64 = padBase64(base64);
+    base64 = padBase64(base64)
 
     // 使用 atob 進行解碼
-    const binaryString = atob(base64);
-    const len = binaryString.length;
-    const bytes = new Uint8Array(len);
+    const binaryString = atob(base64)
+    const len = binaryString.length
+    const bytes = new Uint8Array(len)
     for (let i = 0; i < len; i++) {
-      bytes[i] = binaryString.charCodeAt(i);
+      bytes[i] = binaryString.charCodeAt(i)
     }
-    return bytes.buffer;
+    return bytes.buffer
   } catch (error) {
-    console.error('Failed to convert Base64 to ArrayBuffer:', error);
-    return null;
+    console.error('Failed to convert Base64 to ArrayBuffer:', error)
+    return null
   }
 }
 
@@ -74,17 +73,17 @@ const base64ToArrayBuffer = (base64) => {
  * @returns {string|null} - 文件的副檔名，若無法判斷則返回 null
  */
 const getFileExtensionFromBase64 = (base64) => {
-  const mimeType = extractMimeType(base64);
+  const mimeType = extractMimeType(base64)
   if (!mimeType) {
-    console.warn('無法從 Base64 字串中提取 MIME 類型');
-    return null;
+    console.warn('無法從 Base64 字串中提取 MIME 類型')
+    return null
   }
-  const extension = getExtensionFromMimeType(mimeType);
+  const extension = getExtensionFromMimeType(mimeType)
   if (!extension) {
-    console.warn('無法匹配 MIME 類型與副檔名');
-    return null;
+    console.warn('無法匹配 MIME 類型與副檔名')
+    return null
   }
-  return extension;
+  return extension
 }
 
 /**
@@ -93,8 +92,8 @@ const getFileExtensionFromBase64 = (base64) => {
  * @returns {string|null} - 提取到的 MIME 類型，若無法提取則返回 null
  */
 const extractMimeType = (base64) => {
-  const mimeMatch = base64.match(/^data:(.*?);base64,/);
-  return mimeMatch ? mimeMatch[1] : null;
+  const mimeMatch = base64.match(/^data:(.*?);base64,/)
+  return mimeMatch ? mimeMatch[1] : null
 }
 
 /**
@@ -162,7 +161,7 @@ const getExtensionFromMimeType = (mimeType) => {
 
     // 二進制文件類型
     'application/octet-stream': 'bin',
-  };
+  }
 
-  return mimeToExtensionMap[mimeType] || null;
+  return mimeToExtensionMap[mimeType] || null
 }

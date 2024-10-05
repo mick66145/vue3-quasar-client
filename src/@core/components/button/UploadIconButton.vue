@@ -30,10 +30,10 @@ import useNotify from '@/hooks/useNotify'
 export default defineComponent({
   props: {
     label: { type: String },
-    icon: { type: String , default: 'cloud_upload' },
+    icon: { type: String, default: 'cloud_upload' },
     outline: { type: Boolean, default: false },
     rounded: { type: Boolean, default: true },
-    accept: { type: String},
+    accept: { type: String },
     maxFileSize: { type: Number, default: 5120000 },
   },
   emits: ['on-file'],

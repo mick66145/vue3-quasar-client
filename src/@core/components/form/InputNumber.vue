@@ -73,8 +73,8 @@ export default defineComponent({
     const ruleList = computed(() => {
       const rule = []
       required.value && rule.push(vuelidate.required(i18n.global.t('g.validation.required', { attribute: label.value })))
-      min.value && rule.push(vuelidate.minValue(i18n.global.t('g.validation.min-value', { attribute: label.value,min: min.value })))
-      max.value && rule.push(vuelidate.maxValue(i18n.global.t('g.validation.max-value', { attribute: label.value,max: max.value })))
+      min.value && rule.push(vuelidate.minValue(i18n.global.t('g.validation.min-value', { attribute: label.value, min: min.value })))
+      max.value && rule.push(vuelidate.maxValue(i18n.global.t('g.validation.max-value', { attribute: label.value, max: max.value })))
       return rule.concat(rules.value)
     })
     const observeValue = computed({

@@ -17,43 +17,42 @@
       />
       <input-text
         v-if="other"
+        v-model="observeValue"
         class="ml-[8px]"
         :outlined="false"
-        v-model="observeValue"
       />
     </div>
   </div>
 </template>
 
 <script>
-import { useVModel } from "@vueuse/core";
-import { defineComponent , computed , toRefs } from "vue-demi";
+import { useVModel } from '@vueuse/core'
+import { defineComponent, computed, toRefs } from 'vue-demi'
 export default defineComponent({
   props: {
     modelValue: { type: [String, Number, null, Object, Boolean] },
-    options: { type: Array, default() { return [] }},
+    options: { type: Array, default () { return [] } },
     label: { type: String },
-    color: { type: String, default: "primary" },
+    color: { type: String, default: 'primary' },
     disable: { type: Boolean, default: false },
   },
-  emits: ["update:modelValue"],
-  setup(props, { emit }) {
-    
-    //data
+  emits: ['update:modelValue'],
+  setup (props, { emit }) {
+    // data
     const { options } = toRefs(props)
-    const observeValue = useVModel(props, "modelValue", emit);
-    
+    const observeValue = useVModel(props, 'modelValue', emit)
+
     // computed
     const other = computed({
-      get () { return options.value.map(item=>item.value).includes(observeValue.value) ? '' : 'other'},
+      get () { return options.value.map(item => item.value).includes(observeValue.value) ? '' : 'other' },
       set () {},
     })
     return {
       observeValue,
       other,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped>

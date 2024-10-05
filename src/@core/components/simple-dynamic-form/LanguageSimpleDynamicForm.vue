@@ -1,10 +1,10 @@
 <template>
   <div class="row q-col-gutter-md">
     <div class="row col-12">
-      <language-tabs v-model="currentLang" @update:modelValue="onChange('languageTabs')"  />
+      <language-tabs v-model="currentLang" @update:modelValue="onChange('languageTabs')" />
     </div>
     <div class="col-12">
-      <simple-dynamic-form ref="simpleDynamicForm" :models="observeModels" :store="storeForm"  />
+      <simple-dynamic-form ref="simpleDynamicForm" :models="observeModels" :store="storeForm" />
     </div>
   </div>
 </template>
@@ -15,10 +15,10 @@ import { useFormStore } from './stores/form'
 
 export default defineComponent({
   props: {
-    id: { type: String, default : "languageSimpleDynamicForm" },
-    models: { type: Array, default() { return [] } },
+    id: { type: String, default: 'languageSimpleDynamicForm' },
+    models: { type: Array, default () { return [] } },
   },
-  setup(props) {
+  setup (props) {
     // data
     const { models } = toRefs(props)
     const simpleDynamicForm = ref()
@@ -35,7 +35,7 @@ export default defineComponent({
     const getFormModels = () => {
       return simpleDynamicForm.value.getFormModels()
     }
-    const getFormData = () =>{
+    const getFormData = () => {
       return simpleDynamicForm.value.getFormData()
     }
     const onChange = (action) => {
@@ -48,7 +48,7 @@ export default defineComponent({
       }
     }
     const setLocaleModelShow = (models) => {
-      return models.map(item =>{ return { ...item, is_show: item.locale === currentLang.value }}) || []
+      return models.map(item => { return { ...item, is_show: item.locale === currentLang.value } }) || []
     }
     const getLocaleModel = () => {
       return setLocaleModelShow(Array.from(getFormModels()))
@@ -57,7 +57,7 @@ export default defineComponent({
     // watch
     watch(() => models.value, (models) => {
       observeModels.value = setLocaleModelShow(models)
-    });
+    })
 
     return {
       simpleDynamicForm,
@@ -66,7 +66,7 @@ export default defineComponent({
       observeModels,
       getFormModels,
       getFormData,
-      onChange
+      onChange,
     }
   },
 })

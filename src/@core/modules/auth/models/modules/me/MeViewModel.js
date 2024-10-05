@@ -9,10 +9,10 @@ export const MeViewModel = (item) => {
   const viewModel = (item) => {
     const meObj = {
       ...MeModel(item),
-      ...Me()
-    };
-    return meObj;
-  };
+      ...Me(),
+    }
+    return meObj
+  }
 
-  return viewModel(item);
+  return viewModel(item)
 }

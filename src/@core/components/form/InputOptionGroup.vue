@@ -32,10 +32,9 @@ export default defineComponent({
     'update:modelValue',
   ],
   setup (props, { emit }) {
-    
-    //data
+    // data
     const observeValue = useVModel(props, 'modelValue', emit)
-    
+
     return {
       observeValue,
     }

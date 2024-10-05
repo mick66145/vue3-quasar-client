@@ -31,7 +31,7 @@ export default defineComponent({
     const observeValue = useVModel(props, 'modelValue', emit)
     const companyList = ref([])
 
-    //computed
+    // computed
     const observeLabel = computed(() => {
       return label.value ? label.value : i18n.global.t('company.form.name')
     })
@@ -46,7 +46,7 @@ export default defineComponent({
 
     // methods
     const fetchData = async (query) => {
-      return await companyResource.list({query}).then((res) => {
+      return await companyResource.list({ query }).then((res) => {
         companyList.value = []
         companyList.value = res.list
       })

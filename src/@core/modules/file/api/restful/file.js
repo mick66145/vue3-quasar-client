@@ -5,9 +5,8 @@ import request from '@core/utils/request'
 const fileBaseUrl = `${Configuration('fileServerHost')}`
 
 export const FileResource = ({
-  uri = 'file'
+  uri = 'file',
 }) => {
-
   const upload = ({ file }) => {
     const formData = new FormData()
     formData.append('file', file)
@@ -30,7 +29,6 @@ export const FileResource = ({
     put,
     destroy,
     selectAll,
-    upload
+    upload,
   }
 }
-

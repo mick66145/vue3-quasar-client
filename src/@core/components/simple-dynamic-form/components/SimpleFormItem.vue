@@ -1,7 +1,13 @@
 <template>
-  <base-form-item v-show="model.is_show" :label="observeLabel" :class="observeClass" >
-    <component v-bind="model" :is="model.component" :label="observeLabel" :placeholder="observePlaceholder"
-      :model-value="modelValue" @update:modelValue="handleChange" />
+  <base-form-item v-show="model.is_show" :label="observeLabel" :class="observeClass">
+    <component
+      v-bind="model"
+      :is="model.component"
+      :label="observeLabel"
+      :placeholder="observePlaceholder"
+      :model-value="modelValue"
+      @update:modelValue="handleChange"
+    />
   </base-form-item>
 </template>
 
@@ -14,9 +20,8 @@ export default defineComponent({
     model: { type: Object, required: true, default: () => ({}) },
     store: { type: Object },
   },
-  setup(props) {
-
-    //data 
+  setup (props) {
+    // data
     const { model, store: storeForm } = toRefs(props)
     const { data_key, layout, label, placeholder, i18n_key } = model.value
 
@@ -54,6 +59,6 @@ export default defineComponent({
       observePlaceholder,
       handleChange,
     }
-  }
+  },
 })
 </script>

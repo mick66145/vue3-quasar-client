@@ -10,7 +10,7 @@ export default function useServerDataTable ({
   callback = () => {},
 }) {
   const { setSessionStorage, getSessionStorage } = useSessionStorage()
-  
+
   let sessionStorage = getSessionStorage(sessionStorageKey)
   const search = reactive({})
   const data = ref([])

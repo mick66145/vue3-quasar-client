@@ -17,7 +17,7 @@ export default defineComponent({
   props: {
     modelValue: { type: [String, Number] },
     label: { type: String },
-    placeholder: { type: String},
+    placeholder: { type: String },
     max: { type: [String], default: convertDateTime() },
     required: { type: Boolean, default: false },
   },

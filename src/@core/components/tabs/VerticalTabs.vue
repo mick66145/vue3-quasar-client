@@ -17,7 +17,7 @@ export default defineComponent({
     vertical: { type: Boolean, default: true },
     responsive: { type: Boolean, default: true },
   },
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     // data
     const { vertical, responsive } = toRefs(props)
     const observeValue = useVModel(props, 'modelValue', emit)
@@ -25,7 +25,7 @@ export default defineComponent({
 
     // computed
     const observeVertical = computed(() => {
-      return responsive.value ? (deviceType.value === 'mobile' ? false : true) : vertical.value
+      return responsive.value ? (deviceType.value !== 'mobile') : vertical.value
     })
 
     return {

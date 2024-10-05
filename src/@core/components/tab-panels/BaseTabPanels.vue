@@ -1,6 +1,13 @@
 <template>
-  <q-tab-panels class="bg-grey-1" v-model="observeValue" :animated="animated" :swipeable="swipeable"
-    :vertical="vertical" :transition-prev="transitionPrev" :transition-next="transitionNext">
+  <q-tab-panels
+    v-model="observeValue"
+    class="bg-grey-1"
+    :animated="animated"
+    :swipeable="swipeable"
+    :vertical="vertical"
+    :transition-prev="transitionPrev"
+    :transition-next="transitionNext"
+  >
     <template v-if="$slots.default" #default>
       <slot name="default" />
     </template>
@@ -20,7 +27,7 @@ export default defineComponent({
     transitionPrev: { type: String, default: 'jump-up' },
     transitionNext: { type: String, default: 'jump-down' },
   },
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     // data
     const observeValue = useVModel(props, 'modelValue', emit)
     return {

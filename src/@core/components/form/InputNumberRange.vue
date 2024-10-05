@@ -1,9 +1,9 @@
 <template>
   <div class="row">
-    <label class="col-12" v-if="showLabel">{{ inputLabel }}</label>
+    <label v-if="showLabel" class="col-12">{{ inputLabel }}</label>
     <div class="col-12">
       <div class="row">
-        <div class="col-5" v-if="showMinValue">
+        <div v-if="showMinValue" class="col-5">
           <input-number v-model="observeValue.min_value" />
         </div>
         <div class="col-2">
@@ -16,9 +16,9 @@
           </div>
         </div>
         <div class="col-5">
-          <input-number class="col-5" v-if="showMaxValue" v-model="observeValue.max_value">
+          <input-number v-if="showMaxValue" v-model="observeValue.max_value" class="col-5">
             <template #after>
-              <slot name="max-value-after"></slot>
+              <slot name="max-value-after" />
             </template>
           </input-number>
         </div>
@@ -33,7 +33,7 @@ import { useVModel } from '@vueuse/core'
 export default defineComponent({
   props: {
     label: { type: String },
-    modelValue: { type: Object, default: {min_value:0,max_value:0} },
+    modelValue: { type: Object, default: { min_value: 0, max_value: 0 } },
     minSymbol: { type: String, default: '≤' },
     maxSymbol: { type: String, default: '≤' },
     median: { type: String, default: 'X' },
@@ -45,7 +45,7 @@ export default defineComponent({
   emits: [
     'update:modelValue',
   ],
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     // data
     const { label, showLabel } = toRefs(props)
     const observeValue = useVModel(props, 'modelValue', emit)

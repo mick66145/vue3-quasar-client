@@ -22,7 +22,7 @@ export default defineComponent({
     modelValue: { type: [String, Object] },
     required: { type: Boolean, default: false },
     label: { type: String },
-    placeholder: { type: String},
+    placeholder: { type: String },
   },
   emits: ['update:modelValue'],
   setup (props, { emit }) {
@@ -31,7 +31,7 @@ export default defineComponent({
     const observeValue = useVModel(props, 'modelValue', emit)
     const cityList = ref([])
 
-    //computed
+    // computed
     const observeLabel = computed(() => {
       return label.value ? label.value : i18n.global.t('g.common.city')
     })
@@ -46,7 +46,7 @@ export default defineComponent({
 
     // methods
     const fetchData = (query) => {
-      return cityResource.list({query}).then((res) => {
+      return cityResource.list({ query }).then((res) => {
         cityList.value = []
         cityList.value = res.list
       })

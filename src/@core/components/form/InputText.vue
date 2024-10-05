@@ -81,13 +81,13 @@ export default defineComponent({
 
     // computed
     const observePlaceholder = computed(() => {
-      return placeholder.value ? placeholder.value : i18n.global.t('g.common.input', { field: "" })
+      return placeholder.value ? placeholder.value : i18n.global.t('g.common.input', { field: '' })
     })
     const ruleList = computed(() => {
       const rule = []
       required.value && rule.push(vuelidate.required(i18n.global.t('g.validation.required', { attribute: label.value })))
-      maxlength.value && rule.push(vuelidate.maxLength(maxlength.value,i18n.global.t('g.validation.max-length', { max: maxlength.value })))
-      minlength.value && rule.push(vuelidate.minLength(minlength.value,i18n.global.t('g.validation.min-length', { min: minlength.value })))
+      maxlength.value && rule.push(vuelidate.maxLength(maxlength.value, i18n.global.t('g.validation.max-length', { max: maxlength.value })))
+      minlength.value && rule.push(vuelidate.minLength(minlength.value, i18n.global.t('g.validation.min-length', { min: minlength.value })))
       return rule.concat(rules.value)
     })
     const inputLabel = computed(() => {

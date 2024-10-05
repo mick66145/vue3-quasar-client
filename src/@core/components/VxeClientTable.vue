@@ -11,15 +11,33 @@
         <base-flat-button label="全選" @click="onSelectAll" />
         <base-flat-button color="red" label="清除" @click="clearAllCheckboxRow" />
       </div>
-      <vxe-table ref="dataTable" :key="refreshKey" class="q-mb-sm" auto-resize round stripe
-        :row-config="observeRowConfig" :data="data" :max-height="maxHeight"
-        :sort-config="{ trigger: 'cell', remote: true }" :show-footer="showFooter"
-        :footer-span-method="footerSpanMethod" :footer-method="footerMethod" :checkbox-config="observeCheckboxConfig"
-        :tree-config="treeConfig" :expand-config="expandConfig" :header-cell-style="headerCellStyle"
-        :cell-style="cellStyle" :footer-cell-style="footerCellStyle" @sort-change="onChangeSort"
-        @checkbox-all="onCheckboxAll" @checkbox-change="onCheckboxChange" @cell-click="onCellClick">
+      <vxe-table
+        ref="dataTable"
+        :key="refreshKey"
+        class="q-mb-sm"
+        auto-resize
+        round
+        stripe
+        :row-config="observeRowConfig"
+        :data="data"
+        :max-height="maxHeight"
+        :sort-config="{ trigger: 'cell', remote: true }"
+        :show-footer="showFooter"
+        :footer-span-method="footerSpanMethod"
+        :footer-method="footerMethod"
+        :checkbox-config="observeCheckboxConfig"
+        :tree-config="treeConfig"
+        :expand-config="expandConfig"
+        :header-cell-style="headerCellStyle"
+        :cell-style="cellStyle"
+        :footer-cell-style="footerCellStyle"
+        @sort-change="onChangeSort"
+        @checkbox-all="onCheckboxAll"
+        @checkbox-change="onCheckboxChange"
+        @cell-click="onCellClick"
+      >
         <slot name="default" />
-        <vxe-column :title="`${$t('g.common.operate')}`" fixed="right" width="115" v-if="mode === 'edit'">
+        <vxe-column v-if="mode === 'edit'" :title="`${$t('g.common.operate')}`" fixed="right" width="115">
           <template #default="{ row }">
             <div class="row">
               <template v-if="row.mode === 'edit'">
@@ -37,8 +55,13 @@
           </template>
         </vxe-column>
       </vxe-table>
-      <pagination v-if="total > 0 && showPagination" :total="total" :current="current" :auto-scroll="false"
-        @update:current="onUpdateCurrent" />
+      <pagination
+        v-if="total > 0 && showPagination"
+        :total="total"
+        :current="current"
+        :auto-scroll="false"
+        @update:current="onUpdateCurrent"
+      />
     </div>
     <skeleton-table v-if="isReading && showSkeleton" />
   </div>
@@ -49,7 +72,7 @@ import { defineComponent, ref, computed } from 'vue-demi'
 import mapKeys from 'lodash-es/mapKeys'
 export default defineComponent({
   props: {
-    data: { type: Array, default() { return [] } },
+    data: { type: Array, default () { return [] } },
     total: { type: Number, default: 0 },
     current: { type: Number, default: 1 },
     showPagination: { type: Boolean, default: true },
@@ -70,7 +93,7 @@ export default defineComponent({
     mode: { type: String }, // edit
   },
   emits: ['sort-change', 'checkbox-all', 'checkbox-change', 'update:current', 'select-all', 'update:all-checkbox-records', 'cell-click'],
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     // data
     const dataTable = ref()
     const refreshKey = ref(0)

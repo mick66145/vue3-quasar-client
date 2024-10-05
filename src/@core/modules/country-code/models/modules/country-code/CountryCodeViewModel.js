@@ -3,8 +3,8 @@ import { CountryCodeModel } from './CountryCodeModel'
 
 const CountryCode = () => ({
   ...Base(),
-  //map欄位
-  name_text: "",
+  // map欄位
+  name_text: '',
 })
 
 export const CountryCodeViewModel = (item) => {
@@ -12,10 +12,10 @@ export const CountryCodeViewModel = (item) => {
     const countryCodeObj = {
       ...CountryCodeModel(item),
       ...CountryCode(),
-      name_text : `${item?.country_phone_code}(${item?.country_name})`
-    };
-    return countryCodeObj;
-  };
+      name_text: `${item?.country_phone_code}(${item?.country_name})`,
+    }
+    return countryCodeObj
+  }
 
-  return viewModel(item);
+  return viewModel(item)
 }

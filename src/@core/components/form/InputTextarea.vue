@@ -1,6 +1,12 @@
 <template>
-  <input-text v-model="observeValue" :label="label" :placeholder="placeholder" :maxlength="65536"
-    :required="required" type="textarea" />
+  <input-text
+    v-model="observeValue"
+    :label="label"
+    :placeholder="placeholder"
+    :maxlength="65536"
+    :required="required"
+    type="textarea"
+  />
 </template>
 
 <script>
@@ -16,7 +22,7 @@ export default defineComponent({
   emits: [
     'update:modelValue',
   ],
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     // data
     const observeValue = useVModel(props, 'modelValue', emit)
 

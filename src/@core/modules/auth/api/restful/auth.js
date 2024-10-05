@@ -1,10 +1,9 @@
 import request from '@core/utils/request'
 
 export const AuthResource = ({
-  uri = 'auth'
+  uri = 'auth',
 }) => {
-
-  const login = ({params}) => {
+  const login = ({ params }) => {
     return request({
       url: `/${uri}/login`,
       method: 'post',
@@ -12,7 +11,7 @@ export const AuthResource = ({
     }).then(res => res.data)
   }
 
-  const register = ({params}) => {
+  const register = ({ params }) => {
     return request({
       url: `/${uri}/register`,
       method: 'post',
@@ -20,7 +19,7 @@ export const AuthResource = ({
     }).then(res => res.data)
   }
 
-  const forgetPassword = ({params}) => {
+  const forgetPassword = ({ params }) => {
     return request({
       url: `/${uri}/forget_password`,
       method: 'post',
@@ -28,7 +27,7 @@ export const AuthResource = ({
     }).then(res => res.data)
   }
 
-  const getVerifyCode = ({params}) => {
+  const getVerifyCode = ({ params }) => {
     return request({
       url: `/${uri}/verify_code`,
       method: 'post',
@@ -36,7 +35,7 @@ export const AuthResource = ({
     }).then(res => res.data)
   }
 
-  const getLoginCaptcha = ({query}) => {
+  const getLoginCaptcha = ({ query }) => {
     return request({
       url: `/${uri}/login_captcha`,
       method: 'get',
@@ -52,7 +51,7 @@ export const AuthResource = ({
     })
   }
 
-  const bindCheck = ({params}) => {
+  const bindCheck = ({ params }) => {
     return request({
       url: `/${uri}/bind/action/check`,
       method: 'post',
@@ -60,7 +59,7 @@ export const AuthResource = ({
     }).then(res => res.data)
   }
 
-  const bind = ({params}) => {
+  const bind = ({ params }) => {
     return request({
       url: `/${uri}/bind`,
       method: 'post',
@@ -68,7 +67,7 @@ export const AuthResource = ({
     }).then(res => res.data)
   }
 
-  const unbind = ({params}) => {
+  const unbind = ({ params }) => {
     return request({
       url: `/${uri}/unbind`,
       method: 'post',
@@ -89,7 +88,7 @@ export const AuthResource = ({
       })
   }
 
-  const profile = ({params}) => {
+  const profile = ({ params }) => {
     return request({
       url: `/${uri}/me`,
       method: 'patch',
@@ -119,7 +118,7 @@ export const AuthResource = ({
       })
   }
 
-  const changePassword = ({params}) => {
+  const changePassword = ({ params }) => {
     return request({
       url: `/${uri}/change_password`,
       method: 'post',
@@ -127,7 +126,7 @@ export const AuthResource = ({
     }).then(res => res.data)
   }
 
-  const refreshToken = ({params}) => {
+  const refreshToken = ({ params }) => {
     return request({
       url: `/${uri}/refresh_token`,
       method: 'post',

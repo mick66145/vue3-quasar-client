@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { defineComponent, computed, getCurrentInstance, toRefs} from "vue-demi";
+import { defineComponent, computed, getCurrentInstance, toRefs } from 'vue-demi'
 
 export default defineComponent({
   props: {
@@ -18,25 +18,25 @@ export default defineComponent({
     labelWidth: { type: String },
     labelPosition: { type: String },
   },
-  setup(props) {
-    //data
-    const instance = getCurrentInstance();
-    const { labelWidth } = toRefs(props);
+  setup (props) {
+    // data
+    const instance = getCurrentInstance()
+    const { labelWidth } = toRefs(props)
 
-    //computed
-    const form = computed(() => instance.proxy.$parent.$parent);
+    // computed
+    const form = computed(() => instance.proxy.$parent.$parent)
     const labelStyle = computed(() => {
-      const ret = {};
-      const _labelWidth = labelWidth.value || form.value.labelWidth;
-      if (form.value.labelPosition === "top") return ret;
-      if (_labelWidth) { ret.width = _labelWidth;}
-      return ret;
-    });    
+      const ret = {}
+      const _labelWidth = labelWidth.value || form.value.labelWidth
+      if (form.value.labelPosition === 'top') return ret
+      if (_labelWidth) { ret.width = _labelWidth }
+      return ret
+    })
     return {
       labelStyle,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="postcss" scoped>

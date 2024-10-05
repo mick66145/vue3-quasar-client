@@ -9,10 +9,10 @@ export const AreaViewModel = (item) => {
   const viewModel = (item) => {
     const areaObj = {
       ...AreaModel(item),
-      ...Area()
-    };
-    return areaObj;
-  };
+      ...Area(),
+    }
+    return areaObj
+  }
 
-  return viewModel(item);
+  return viewModel(item)
 }

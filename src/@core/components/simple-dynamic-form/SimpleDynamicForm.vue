@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SimpleForm from './components/SimpleForm.vue';
+import SimpleForm from './components/SimpleForm.vue'
 import { defineComponent, computed, toRefs } from 'vue-demi'
 import { useFormStore } from './stores/form'
 
@@ -14,14 +14,13 @@ export default defineComponent({
     SimpleForm,
   },
   props: {
-    id: { type: String, default: "simpleDynamicForm" },
-    models: { type: Array, default() { return [] } },
+    id: { type: String, default: 'simpleDynamicForm' },
+    models: { type: Array, default () { return [] } },
     store: { type: Object },
   },
   emits: [],
-  setup(props) {
-
-    // data 
+  setup (props) {
+    // data
     const { store } = toRefs(props)
 
     // computed

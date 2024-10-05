@@ -26,7 +26,7 @@ export default defineComponent({
     title: { type: String },
     sortable: { type: Boolean, default: false },
     width: { type: [Number, String] },
-    minWidth: { type: [Number, String]},
+    minWidth: { type: [Number, String] },
     useAuthorization: { type: Boolean, default: false },
     ratio: { type: Number, default: 1 },
   },

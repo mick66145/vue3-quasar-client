@@ -17,7 +17,7 @@ export default defineComponent({
     capture: { type: String, default: 'environment' }, // user、environment
   },
   emits: ['on-file'],
-  setup (props,{emit}) {
+  setup (props, { emit }) {
     // data
     const { label } = toRefs(props)
 
@@ -32,7 +32,7 @@ export default defineComponent({
 
     return {
       buttonLabel,
-      onFile
+      onFile,
     }
   },
 })

@@ -1,5 +1,5 @@
 <template>
-  <base-tabs v-model="observeValue" v-for="{ locale, name } in lanList" :key="locale">
+  <base-tabs v-for="{ locale, name } in lanList" :key="locale" v-model="observeValue">
     <q-tab :name="locale" :label="name" />
   </base-tabs>
 </template>
@@ -13,7 +13,7 @@ export default defineComponent({
   props: {
     modelValue: { type: String },
   },
-  setup(props, { emit }) {
+  setup (props, { emit }) {
     // data
     const observeValue = useVModel(props, 'modelValue', emit)
     const storeLanguageSetting = useLanguageSetting()

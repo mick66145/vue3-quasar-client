@@ -8,19 +8,19 @@ import { defineComponent, toRefs } from 'vue-demi'
 
 export default defineComponent({
   components: {
-    SimpleFormItem
+    SimpleFormItem,
   },
   props: {
-    models: { type: Array, default() { return [] } },
+    models: { type: Array, default () { return [] } },
     store: { type: Object },
   },
-  setup(props) {
-    //data 
+  setup (props) {
+    // data
     const { store: storeForm } = toRefs(props)
 
     return {
-      storeForm
+      storeForm,
     }
-  }
+  },
 })
 </script>
