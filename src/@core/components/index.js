@@ -69,6 +69,7 @@ import SaveButton from './button/SaveButton.vue'
 import LineButton from './button/LineButton.vue'
 import GoogleButton from './button/GoogleButton.vue'
 import FacebookButton from './button/FacebookButton.vue'
+import GoBackButton from './button/GoBackButton.vue'
 import BaseIconButton from './button/BaseIconButton.vue'
 import AddIconButton from './button/AddIconButton.vue'
 import EditIconButton from './button/EditIconButton.vue'
@@ -222,6 +223,7 @@ export default {
     app.component('LineButton', LineButton)
     app.component('GoogleButton', GoogleButton)
     app.component('FacebookButton', FacebookButton)
+    app.component('GoBackButton', GoBackButton)
     app.component('BaseIconButton', BaseIconButton)
     app.component('AddIconButton', AddIconButton)
     app.component('EditIconButton', EditIconButton)
