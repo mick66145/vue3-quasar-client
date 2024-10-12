@@ -1,7 +1,7 @@
 <template>
-  <q-footer class="bg-white text-grey absolute" reveal elevated>
-    <div class="text-center row items-center justify-center q-px-lg q-py-md">
-      © Ming 2024 All Rights Reserved.
+  <q-footer class="bg-dark text-white" reveal elevated>
+    <div class="text-center row items-center justify-center q-pa-sm">
+      © 2024 Ming All Rights Reserved.
     </div>
   </q-footer>
 </template>
