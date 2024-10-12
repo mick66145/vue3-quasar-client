@@ -10,8 +10,14 @@ const memberCenterRouter = {
     slug: 'link',
     auth: true,
   },
-  redirect: { name: 'MemberCenterProfile' },
+  redirect: { name: 'MemberCenter' },
   children: [
+    {
+      path: '',
+      component: () => import('@/views/member-center/member-center/MemberCenter.vue'),
+      name: 'MemberCenter',
+      meta: { title: '個人首頁', auth: true },
+    },
     {
       path: 'profile',
       component: () => import('@/views/member-center/member-center-profile/MemberCenterProfile.vue'),
