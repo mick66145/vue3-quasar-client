@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 /* Layout */
 import MainLayout from '@/layouts/MainLayout.vue'
 
+/* Router Modules */
+import memberCenterRouter from './modules/member-center'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -26,6 +29,7 @@ const router = createRouter({
       path: '/provider-redirect',
       component: () => import('@/views/provider/ProviderRedirect.vue'),
     },
+    memberCenterRouter,
   ],
   scrollBehavior (to, from, savedPosition) {
     return savedPosition || { left: 0, top: 0 }

@@ -79,7 +79,7 @@ export default defineComponent({
         bind: () => { return callBindFetch({ ...formData }) },
       }
       const [res] = await urlObj.bind()
-      if (res) { router.push({ name: 'PersonalForm' }) } else { router.push({ name: 'Login' }) }
+      if (res) { router.push({ name: 'MemberCenter' }) } else { router.push({ name: 'Login' }) }
     }
     const getProvider = () => {
       const urlParams = new URLSearchParams(window.location.search)
