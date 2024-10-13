@@ -139,11 +139,11 @@ export default defineComponent({
   @apply py-[10px];
 }
 .no-spinner {
-  ::v-deep input[type="number"]::-webkit-outer-spin-button,
-  ::v-deep input[type="number"]::-webkit-inner-spin-button {
+  :deep(input[type="number"]::-webkit-outer-spin-button),
+  :deep(input[type="number"]::-webkit-inner-spin-button) {
     @apply appearance-none m-0;
   }
-  ::v-deep input[type="number"] {
+  :deep(input[type="number"]) {
     @apply appearance-none;
   }
 }
