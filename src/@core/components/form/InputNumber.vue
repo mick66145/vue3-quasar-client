@@ -1,6 +1,8 @@
 <template>
   <input-text
+    ref="input"
     v-model="observeValue"
+    :class="{'no-spinner':!spinner}"
     :label="inputLabel"
     type="number"
     :min="min"
@@ -46,7 +48,7 @@
 </template>
 
 <script>
-import { defineComponent, computed, toRefs } from 'vue-demi'
+import { defineComponent, ref, computed, toRefs } from 'vue-demi'
 import { vuelidate } from '@/plugins/vuelidate'
 import { i18n } from '@/plugins/i18n'
 import useNotify from '@/hooks/useNotify'
@@ -61,11 +63,15 @@ export default defineComponent({
     max: { type: [String, Number] },
     showLabel: { type: Boolean, default: false },
     showMaxNotify: { type: Boolean, default: false },
+    spinner: { type: Boolean, default: true },
   },
   emits: [
     'update:modelValue',
   ],
   setup (props, { emit }) {
+    // ref
+    const input = ref()
+
     // data
     const { label, rules, required, min, max, showLabel, showMaxNotify } = toRefs(props)
 
@@ -93,6 +99,16 @@ export default defineComponent({
       return showLabel.value ? label.value : undefined
     })
 
+    // methods
+    const focus = () => {
+      input.value.focus()
+    }
+    const blur = () => {
+      input.value.blur()
+    }
+    const select = () => {
+      input.value.select()
+    }
     const clearFn = (val) => {
       emit('update:modelValue', required.value ? (min.value ? min.value : 0) : null)
     }
@@ -104,9 +120,13 @@ export default defineComponent({
     const { customNotify } = useNotify()
 
     return {
+      input,
       observeValue,
       ruleList,
       inputLabel,
+      focus,
+      blur,
+      select,
       clearFn,
       onChange,
     }
@@ -117,5 +137,14 @@ export default defineComponent({
 <style lang="postcss" scoped>
 .q-input {
   @apply py-[10px];
+}
+.no-spinner {
+  ::v-deep input[type="number"]::-webkit-outer-spin-button,
+  ::v-deep input[type="number"]::-webkit-inner-spin-button {
+    @apply appearance-none m-0;
+  }
+  ::v-deep input[type="number"] {
+    @apply appearance-none;
+  }
 }
 </style>

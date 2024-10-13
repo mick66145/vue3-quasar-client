@@ -81,7 +81,7 @@ export default defineComponent({
 
     // computed
     const observePlaceholder = computed(() => {
-      return placeholder.value ? placeholder.value : i18n.global.t('g.common.input', { field: '' })
+      return placeholder.value !== undefined ? placeholder.value : i18n.global.t('g.common.input', { field: '' })
     })
     const ruleList = computed(() => {
       const rule = []
@@ -98,6 +98,12 @@ export default defineComponent({
     const focus = () => {
       input.value.focus()
     }
+    const blur = () => {
+      input.value.blur()
+    }
+    const select = () => {
+      input.value.select()
+    }
     const clearFn = (val) => {
       emit('change')
     }
@@ -111,6 +117,8 @@ export default defineComponent({
       ruleList,
       inputLabel,
       focus,
+      blur,
+      select,
       clearFn,
       changeFn,
     }
