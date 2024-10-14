@@ -3,35 +3,35 @@ import request from '@core/utils/request'
 export const AuthResource = ({
   uri = 'auth',
 }) => {
-  const login = ({ params }) => {
+  const login = ({ payload }) => {
     return request({
       url: `/${uri}/login`,
       method: 'post',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
-  const register = ({ params }) => {
+  const register = ({ payload }) => {
     return request({
       url: `/${uri}/register`,
       method: 'post',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
-  const forgetPassword = ({ params }) => {
+  const forgetPassword = ({ payload }) => {
     return request({
       url: `/${uri}/forget_password`,
       method: 'post',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
-  const getVerifyCode = ({ params }) => {
+  const getVerifyCode = ({ payload }) => {
     return request({
       url: `/${uri}/verify_code`,
       method: 'post',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
@@ -51,27 +51,27 @@ export const AuthResource = ({
     })
   }
 
-  const bindCheck = ({ params }) => {
+  const bindCheck = ({ payload }) => {
     return request({
       url: `/${uri}/bind/action/check`,
       method: 'post',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
-  const bind = ({ params }) => {
+  const bind = ({ payload }) => {
     return request({
       url: `/${uri}/bind`,
       method: 'post',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
-  const unbind = ({ params }) => {
+  const unbind = ({ payload }) => {
     return request({
       url: `/${uri}/unbind`,
       method: 'post',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
@@ -81,18 +81,18 @@ export const AuthResource = ({
       method: 'get',
     }).then(res => res.data)
       .then(res => {
-        const meObj = new baseModules.Me({
+        const meObj = {
           ...res.data,
-        })
+        }
         return meObj
       })
   }
 
-  const profile = ({ params }) => {
+  const profile = ({ payload }) => {
     return request({
       url: `/${uri}/me`,
       method: 'patch',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
@@ -118,19 +118,19 @@ export const AuthResource = ({
       })
   }
 
-  const changePassword = ({ params }) => {
+  const changePassword = ({ payload }) => {
     return request({
       url: `/${uri}/change_password`,
       method: 'post',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
-  const refreshToken = ({ params }) => {
+  const refreshToken = ({ payload }) => {
     return request({
       url: `/${uri}/refresh_token`,
       method: 'post',
-      data: params,
+      data: payload,
     }).then(res => res.data)
   }
 
