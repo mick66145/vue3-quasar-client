@@ -34,11 +34,16 @@ export default defineComponent({
         formData.provider = getProvider()
         formData.token = accessToken
         formData.other.id_token = idToken
-        bind()
+        const [res, err] = await callBindCheckFetch({ ...formData })
+        if (err) {}
+        if (res) bind()
       }
     })
 
     // methods
+    const bindCheckFetch = async (payload) => {
+      return await store.bindCheck(payload)
+    }
     const bindFetch = async (payload) => {
       return await store.bind(payload)
     }
@@ -88,6 +93,11 @@ export default defineComponent({
     }
 
     // use
+    const { callCreateFetch: callBindCheckFetch } = useCRUD({
+      isShowCreateSuccess: false,
+      isShowCreateFail: false,
+      createFetch: bindCheckFetch,
+    })
     const { callCreateFetch: callBindFetch } = useCRUD({
       isShowCreateSuccess: false,
       createFetch: bindFetch,
