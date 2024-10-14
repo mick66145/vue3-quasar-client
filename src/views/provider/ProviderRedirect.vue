@@ -35,7 +35,7 @@ export default defineComponent({
         formData.token = accessToken
         formData.other.id_token = idToken
         const [res, err] = await callBindCheckFetch({ ...formData })
-        if (err) {}
+        if (err) bind()
         if (res) bind()
       }
     })
