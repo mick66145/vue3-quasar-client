@@ -1,12 +1,5 @@
 import { defineStore } from 'pinia'
-import {
-  getToken,
-  setToken,
-  removeToken,
-  getLineAccessToken,
-  setLineAccessToken,
-  removeLineAccessToken,
-} from '@core/utils/auth'
+import { getToken, setToken, removeToken } from '@core/utils/auth'
 import useNotify from '@/hooks/useNotify'
 import { AuthResource } from '@core/modules/auth/api'
 
@@ -14,8 +7,15 @@ export const useUser = defineStore({
   id: 'user',
   state: () => ({
     token: getToken(),
-    lineAccessToken: getLineAccessToken(),
     info: '',
+    socialiteProvider: {
+      token: '',
+      provider: '',
+      other: {
+        id_token: '',
+        phone: '',
+      },
+    },
     permissionList: [],
     authResource: AuthResource({}),
   }),
@@ -90,7 +90,7 @@ export const useUser = defineStore({
     bindCheck (payload) {
       /* 如果有檢查綁定的api就使用以下註解 */
       // return new Promise((resolve, reject) => {
-      //   this.authResource.bindCheck({payload})
+      //   this.authResource.bindCheck({ payload })
       //     .then(res => {
       //       resolve(res)
       //     }).catch(error => {
@@ -107,7 +107,7 @@ export const useUser = defineStore({
     bind (payload) {
       /* 如果有綁定的api就使用以下註解 */
       // return new Promise((resolve, reject) => {
-      //   this.authResource.bind({payload})
+      //   this.authResource.bind({ payload })
       //     .then(res => {
       //       const { data } = res
       //       this.setToken(data.token)
@@ -213,16 +213,13 @@ export const useUser = defineStore({
       this.token = token
     },
 
-    setLineAccessToken (token) {
-      setLineAccessToken(token)
-      this.lineAccessToken = token
+    setSocialiteProvider (socialiteProvider) {
+      this.socialiteProvider = socialiteProvider
     },
 
     clear () {
       this.token = ''
-      this.lineAccessToken = ''
       removeToken()
-      removeLineAccessToken()
       this.$reset()
     },
   },

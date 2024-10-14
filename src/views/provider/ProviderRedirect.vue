@@ -17,14 +17,7 @@ export default defineComponent({
     // data
     const router = useRouter()
     const store = useUser()
-    const formData = reactive({
-      token: '',
-      provider: '',
-      other: {
-        id_token: '',
-        phone: '',
-      },
-    })
+    const formData = reactive(store.socialiteProvider)
 
     // mounted
     onMounted(async () => {
