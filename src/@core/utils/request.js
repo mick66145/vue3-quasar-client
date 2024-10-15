@@ -54,10 +54,12 @@ export const handleError = (error) => {
 }
 
 export const handleAuthError = async (error) => {
-  const { status } = error.response
+  const { status, code } = error.response
   if (status !== 401) return Promise.reject(error)
-  const { resetStore } = useLogout()
-  resetStore()
+  if (code === 4010000) {
+    const { resetStore } = useLogout()
+    resetStore()
+  }
   return Promise.reject(error)
 }
 
