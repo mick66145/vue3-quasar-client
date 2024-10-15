@@ -38,7 +38,7 @@ export default defineComponent({
 
     // computed
     const composite = computed(() => {
-      const nonNullFields = fieldValues.value.filter(Boolean)
+      const nonNullFields = fieldValues.value.filter(value => value !== null && value !== undefined)
       return (length.value === nonNullFields.length && nonNullFields.join('')) || ''
     })
 
@@ -57,7 +57,7 @@ export default defineComponent({
       shouldBlur && fields.value[index - 1]?.blur()
     }
     const onUpdate = (value, index) => {
-      value && focus(index + 1)
+      (value !== null && value !== undefined) && focus(index + 1)
     }
     const onKeyUp = (evnt, index) => {
       const key = evnt.key
