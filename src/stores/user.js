@@ -12,8 +12,11 @@ export const useUser = defineStore({
       token: '',
       provider: '',
       other: {
-        id_token: '',
-        phone: '',
+        id_token: null,
+        code: null,
+        code_token: null,
+        phone: null,
+        phone_country: 'TW',
       },
     },
     permissionList: [],
