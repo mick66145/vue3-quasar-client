@@ -72,6 +72,9 @@ export default defineComponent({
         actions[key]?.()
       }
     }
+    const clear = () => {
+      fieldValues.value = Array.from({ length: length.value }, () => null)
+    }
 
     // watch
     watch(composite, () => {
@@ -88,6 +91,7 @@ export default defineComponent({
       onKeyUp,
       onUpdate,
       updateFieldRef,
+      clear,
     }
   },
 })
