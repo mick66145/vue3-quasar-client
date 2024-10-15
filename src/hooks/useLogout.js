@@ -8,7 +8,7 @@ export default function useLogout () {
   const resetStore = async () => {
     await storeUser.logout()
     notify({ message: '登出成功', type: 'positive' })
-    router.push('/login')
+    router.push('/entry')
   }
 
   return {
