@@ -92,7 +92,5 @@ export default {
       'lt-sm': { max: '576px' },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
 }
