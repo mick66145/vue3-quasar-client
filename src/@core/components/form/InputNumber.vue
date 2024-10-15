@@ -89,7 +89,7 @@ export default defineComponent({
       },
       set (value) {
         if (value === '' || value === null) {
-          emit('update:modelValue', 0)
+          emit('update:modelValue', required.value ? 0 : value)
           return
         }
         emit('update:modelValue', +value)
