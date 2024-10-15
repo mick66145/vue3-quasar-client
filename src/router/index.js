@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { setupGuards } from './guard'
 
 /* Layout */
 import MainLayout from '@/layouts/MainLayout.vue'
@@ -37,5 +38,5 @@ const router = createRouter({
     return savedPosition || { left: 0, top: 0 }
   },
 })
-
+setupGuards(router)
 export default router
