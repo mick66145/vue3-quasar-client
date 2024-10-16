@@ -1,6 +1,8 @@
+import { addRoutes } from '@/router'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { useUser } from '@/stores/user'
+import { usePermission } from '@/stores/permission'
 import { i18n } from '@/plugins/i18n'
 import getPageTitle from '@/utils/get-page-title'
 import useLogout from '@/hooks/useLogout'
@@ -11,6 +13,7 @@ export const setupGuards = router => {
   router.beforeEach(async (to, from, next) => {
     NProgress.start()
     const store = useUser()
+    const storePermission = usePermission()
     if (to.meta.auth && !store.isLogin) {
       return next({ path: '/entry/login', params: to.params, query: { redirect: to.fullPath } })
     }
@@ -20,7 +23,9 @@ export const setupGuards = router => {
         next()
       } else {
         try {
-          await store.whoami()
+          await Promise.all([store.whoami(), store.permission()])
+          const accessRoutes = await storePermission.generateRoutes({ roles: [], permissions: store.permissionList })
+          addRoutes(accessRoutes, {})
           next({ ...to, replace: true })
         } catch (error) {
           const { resetStore } = useLogout()
