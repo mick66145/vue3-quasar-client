@@ -98,7 +98,7 @@ export const AuthResource = ({
 
   const permission = () => {
     return request({
-      url: `/${uri}/me/permission`,
+      url: `/${uri}/permission`,
       method: 'get',
     }).then(res => res.data)
       .then(res => {
