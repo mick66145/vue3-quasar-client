@@ -2,6 +2,7 @@
   <q-btn
     no-caps
     class="shadow-1"
+    :unelevated="unelevated"
     :outline="outline"
     :rounded="rounded"
     :color="color"
@@ -27,6 +28,7 @@ export default defineComponent({
     label: { type: String, default: '' },
     color: { type: String, default: 'primary' },
     icon: { type: String },
+    unelevated: { type: Boolean, default: false },
     outline: { type: Boolean, default: false },
     rounded: { type: Boolean, default: false },
     size: { type: String, default: 'md' },
