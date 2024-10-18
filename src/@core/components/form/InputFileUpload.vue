@@ -9,14 +9,14 @@
         <q-list dense bordered padding class="rounded-borders">
           <q-item-label header>Files</q-item-label>
           <q-item
-            v-downloadUrl="{url:preview(state), name:state.file.filename}"
+            v-downloadUrl="{url:preview(state), name:state.file.name}"
             clickable
           >
             <q-item-section avatar top>
               <q-avatar icon="assignment" color="grey" text-color="white" />
             </q-item-section>
             <q-item-section>
-              <q-item-label lines="1">{{ state.file.filename }}</q-item-label>
+              <q-item-label lines="1">{{ state.file.name }}</q-item-label>
             </q-item-section>
             <q-item-section side>
               <q-btn
@@ -48,6 +48,7 @@
 <script>
 import { defineComponent, ref, reactive, computed } from 'vue-demi'
 import useMessageDialog from '@/hooks/useMessageDialog'
+import useImgStorage from '@/hooks/useImgStorage'
 
 export default defineComponent({
   props: {
@@ -76,10 +77,11 @@ export default defineComponent({
       },
     })
     const preview = computed(() => (data) => {
-      const { blobURL, url, base64, filename } = data.file || {}
+      const { blobURL, url, base64, name } = data.file || {}
       if (blobURL) return blobURL
       if (url) return url
       if (base64) return base64
+      return getImageSrc({ name, size: '200x' })
     })
 
     // methods
@@ -89,7 +91,7 @@ export default defineComponent({
         blobURL: URL.createObjectURL(file),
         raw: file,
         base64: base64,
-        filename: file.name,
+        name: file.name,
       }
       observeValue.value = state
     }
@@ -101,6 +103,7 @@ export default defineComponent({
 
     // use
     const { messageDelete } = useMessageDialog()
+    const { getImageSrc } = useImgStorage()
 
     return {
       fileUpload,
