@@ -1,5 +1,7 @@
 <template>
   <base-button
+    :rounded="rounded"
+    :outline="outline"
     :label="buttonLabel"
     :icon="icon"
     @click="goBack"
@@ -15,6 +17,8 @@ export default defineComponent({
   props: {
     label: { type: String },
     icon: { type: String },
+    outline: { type: Boolean, default: true },
+    rounded: { type: Boolean, default: true },
     fallBack: { type: [String, Object] },
     isFallBack: { type: Boolean, default: false },
   },
