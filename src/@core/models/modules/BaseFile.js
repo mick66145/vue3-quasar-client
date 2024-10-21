@@ -1,6 +1,7 @@
 import Base from '@core/models/modules/Base'
+import useBatchUpload from '@/hooks/useBatchUpload'
 
-const BaseFile = {
+const BaseFile = () => ({
   ...Base(),
   // api欄位
   id: '',
@@ -8,10 +9,7 @@ const BaseFile = {
   name: '',
   size: '',
   url: '',
-
-  // map欄位
-  filename: '',
-}
+})
 
 const BaseFileModel = (item = null) => {
   const model = (item) => {
@@ -22,12 +20,32 @@ const BaseFileModel = (item = null) => {
       name: item?.name || '',
       size: item?.size || '',
       url: item?.url || '',
-
-      // map欄位
-      filename: item?.name || '',
     }
   }
-  return model(item || BaseFile)
+  return model(item || BaseFile())
 }
 
-export default BaseFileModel
+const BaseFileObjViewModel = (item = null) => {
+  const { batchUpload } = useBatchUpload()
+  const model = (item) => {
+    return {
+      file: item?.file || '',
+      file_obj: item?.file_obj !== undefined ? item?.file_obj : ((item?.file && Object.keys(item?.file).length !== 0) ? { ...BaseFileModel(item?.file) } : ''),
+      async uploadFile () {
+        if (this.file_obj?.raw) {
+          const [uploadRes] = await batchUpload({ fileObj: this.file_obj })
+          if (uploadRes && uploadRes.fileObj) {
+            this.file_obj.id = uploadRes.fileObj.id
+          }
+        }
+      },
+      setFile () {
+        this.file = this.file_obj
+      },
+    }
+  }
+
+  return model(item)
+}
+
+export default BaseFileObjViewModel
