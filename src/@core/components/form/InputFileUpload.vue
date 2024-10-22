@@ -55,7 +55,7 @@ export default defineComponent({
     modelValue: { type: [Object, File, String] },
     error: { type: String, default: '' },
     accept: { type: String },
-    maxFileSize: { type: Number, default: 2048000 },
+    maxFileSize: { type: Number, default: 10240000 },
     disable: { type: Boolean, default: false },
     outlined: { type: Boolean, default: false },
   },

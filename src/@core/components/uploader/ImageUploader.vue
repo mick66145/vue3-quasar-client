@@ -27,7 +27,7 @@ export default defineComponent({
   props: {
     accept: { type: String, default: 'image/png, image/jpeg, image/jpg' },
     imgSrc: { type: String },
-    maxFileSize: { type: Number, default: 2048000 },
+    maxFileSize: { type: Number, default: 10240000 },
     disable: { type: Boolean, default: false },
   },
   emits: ['onFile'],

@@ -34,7 +34,7 @@ export default defineComponent({
     outline: { type: Boolean, default: false },
     rounded: { type: Boolean, default: true },
     accept: { type: String },
-    maxFileSize: { type: Number, default: 5120000 },
+    maxFileSize: { type: Number, default: 10240000 },
   },
   emits: ['on-file'],
   setup (props, { emit }) {
