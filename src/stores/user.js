@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { getToken, setToken, removeToken } from '@core/utils/auth'
-import useNotify from '@/hooks/useNotify'
 import { AuthResource } from '@core/modules/auth/api'
 
 export const useUser = defineStore({
@@ -35,8 +34,6 @@ export const useUser = defineStore({
             this.setToken(data.token)
             resolve(res)
           }).catch(error => {
-            const message = error.response.data.message
-            notifyAPIError({ message: message })
             reject(error)
           })
       })
@@ -48,8 +45,6 @@ export const useUser = defineStore({
       //     .then(res => {
       //       resolve(res)
       //     }).catch(error => {
-      //       const message = error.response.data.message
-      //       notifyAPIError({ message: message })
       //       reject(error)
       //     })
       // })
@@ -97,8 +92,6 @@ export const useUser = defineStore({
       //     .then(res => {
       //       resolve(res)
       //     }).catch(error => {
-      //       const message = error.response.data.message
-      //       notifyAPIError({ message: message })
       //       reject(error)
       //     })
       // })
@@ -116,8 +109,6 @@ export const useUser = defineStore({
       //       this.setToken(data.token)
       //       resolve(res)
       //     }).catch(error => {
-      //       const message = error.response.data.message
-      //       notifyAPIError({ message: message })
       //       reject(error)
       //     })
       // })
@@ -133,8 +124,6 @@ export const useUser = defineStore({
       //     .then(res => {
       //       resolve(res)
       //     }).catch(error => {
-      //       const message = error.response.data.message
-      //       notifyAPIError({ message: message })
       //       reject(error)
       //     })
       // })
@@ -228,5 +217,3 @@ export const useUser = defineStore({
   },
 
 })
-
-const { notifyAPIError } = useNotify()
