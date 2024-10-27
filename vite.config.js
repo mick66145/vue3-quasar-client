@@ -98,10 +98,10 @@ export default defineConfig(({ command, mode }) => {
     server: {
       https: false,
       cors: true,
-      port: 3323,
+      port: 3000,
       host: true,
       hmr: {
-        port: 3323,
+        port: 3000,
       },
     },
     resolve: {
