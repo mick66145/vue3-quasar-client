@@ -6,6 +6,7 @@ import MainLayout from '@/layouts/MainLayout.vue'
 
 /* Router Modules */
 import entryRouter from './modules/entry'
+import redirectRouter from './modules/redirect'
 import memberCenterRouter from './modules/member-center'
 
 export const constantRoutes = [
@@ -25,11 +26,8 @@ export const constantRoutes = [
     path: '/:catchAll(.*)*',
     component: () => import('@/views/error-page/404.vue'),
   },
-  {
-    path: '/provider-redirect',
-    component: () => import('@/views/provider/ProviderRedirect.vue'),
-  },
   entryRouter,
+  redirectRouter,
   memberCenterRouter,
 ]
 
