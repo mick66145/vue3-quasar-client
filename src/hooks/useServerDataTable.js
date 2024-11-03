@@ -4,6 +4,7 @@ import mapKeys from 'lodash-es/mapKeys'
 
 export default function useServerDataTable ({
   searchParames = {},
+  sortParames = [], // [{field:string,order:true|false}]
   unSessionStorageParames = [], // [{field:string}]
   sessionStorageKey = 'dashboardServerDataTable',
   usePageSize = true,
@@ -15,6 +16,7 @@ export default function useServerDataTable ({
   const search = reactive({})
   const data = ref([])
   const total = ref(0)
+  const sort = ref([])
   const unSessionStorageParamesField = unSessionStorageParames.map((item) => item.field)
 
   const onChangePage = (page) => {
@@ -41,6 +43,8 @@ export default function useServerDataTable ({
     }
     search.page = 1
     usePageSize && (search.page_size = 10)
+    search.orderby = sortParames.map((item) => `${item.field}:${item.order}`).join(',')
+    sort.value = sortParames
     setSessionStorage(sessionStorageKey, { search })
     setCallback()
   }
@@ -70,7 +74,9 @@ export default function useServerDataTable ({
         search: {
           page: 1,
           page_size: usePageSize ? 10 : null,
+          orderby: sortParames.map((item) => `${item.field}:${item.order}`).join(','),
         },
+        sort: sortParames,
       }
       setSessionStorage(sessionStorageKey, sessionStorageObj)
       sessionStorage = getSessionStorage(sessionStorageKey)
