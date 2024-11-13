@@ -14,6 +14,7 @@
     :option-label="optionLabelFn"
     :option-value="optionValueFn"
     :dense="dense"
+    :rules="ruleList"
     @filter="filterFn"
     @clear="clearFn"
   >
