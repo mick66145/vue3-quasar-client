@@ -1,32 +1,12 @@
-import Base from '@core/models/modules/Base'
+import BaseMedia from './BaseMedia'
 
-const BaseImage = {
-  ...Base(),
-  // api欄位
-  id: '',
-  title: '',
-  alt: '',
-  mime: '',
-  name: '',
-  size: '',
-  url: '',
-}
+const BaseImageViewModel = (item = null) =>
+  BaseMedia(
+    {
+      key: 'image',
+      extraFields: ['title', 'alt'],
+    },
+    item,
+  )
 
-const BaseImageModel = (item = null) => {
-  const model = (item) => {
-    return {
-      // api欄位
-      id: item?.id || '',
-      title: item?.title || '',
-      alt: item?.alt || '',
-      mime: item?.mime || '',
-      name: item?.name || '',
-      size: item?.size || '',
-      url: item?.url || '',
-
-    }
-  }
-  return model(item || BaseImage)
-}
-
-export default BaseImageModel
+export default BaseImageViewModel
