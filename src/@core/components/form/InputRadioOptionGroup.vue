@@ -5,8 +5,13 @@
     :color="color"
     :label="label"
     :disable="disable"
+    :required="required"
     type="radio"
-  />
+  >
+    <template v-if="$slots.label" #label="{ opt }">
+      <slot name="label" :opt="opt" />
+    </template>
+  </input-option-group>
 </template>
 
 <script>
@@ -19,6 +24,7 @@ export default defineComponent({
     label: { type: String },
     color: { type: String, default: 'primary' },
     disable: { type: Boolean, default: false },
+    required: { type: Boolean, default: false },
   },
   emits: [
     'update:modelValue',

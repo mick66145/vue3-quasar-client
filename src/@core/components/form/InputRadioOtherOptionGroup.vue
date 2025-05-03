@@ -7,7 +7,11 @@
       :label="label"
       :disable="disable"
       @update:modelValue="other = ''"
-    />
+    >
+      <template v-if="$slots.label" #label="{ opt }">
+        <slot name="label" :opt="opt" />
+      </template>
+    </input-radio-option-group>
     <div class="other-option">
       <input-radio
         v-model="other"
@@ -35,6 +39,7 @@ export default defineComponent({
     label: { type: String },
     color: { type: String, default: 'primary' },
     disable: { type: Boolean, default: false },
+    required: { type: Boolean, default: false },
   },
   emits: ['update:modelValue'],
   setup (props, { emit }) {
