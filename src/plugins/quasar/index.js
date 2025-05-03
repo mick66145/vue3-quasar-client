@@ -1,8 +1,6 @@
 import { Quasar, Notify, Loading } from 'quasar'
 
-import '@quasar/quasar-ui-qcalendar/src/QCalendarVariables.sass'
-import '@quasar/quasar-ui-qcalendar/src/QCalendarTransitions.sass'
-import '@quasar/quasar-ui-qcalendar/src/QCalendarMonth.sass'
+import '@quasar/quasar-ui-qcalendar/dist/index.css'
 
 import 'quasar/src/css/index.sass'
 import '@quasar/extras/material-icons/material-icons.css'

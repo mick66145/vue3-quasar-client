@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { QCalendarMonth, addToDate, parseTimestamp } from '@quasar/quasar-ui-qcalendar/src/index.js'
+import { QCalendarMonth, addToDate, parseTimestamp } from '@quasar/quasar-ui-qcalendar'
 import { defineComponent, ref, computed, toRefs } from 'vue'
 import { useVModel } from '@vueuse/core'
 export default defineComponent({

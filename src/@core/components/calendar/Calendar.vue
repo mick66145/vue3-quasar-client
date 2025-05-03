@@ -42,10 +42,7 @@
 import NavigationBar from './components/NavigationBar.vue'
 import CalendarMonth from './components/CalendarMonth.vue'
 import { defineComponent, ref, computed } from 'vue'
-import { today } from '@quasar/quasar-ui-qcalendar/src/index.js'
-import '@quasar/quasar-ui-qcalendar/src/QCalendarVariables.sass'
-import '@quasar/quasar-ui-qcalendar/src/QCalendarTransitions.sass'
-import '@quasar/quasar-ui-qcalendar/src/QCalendar.sass'
+import { today } from '@quasar/quasar-ui-qcalendar'
 
 export default defineComponent({
   components: {
