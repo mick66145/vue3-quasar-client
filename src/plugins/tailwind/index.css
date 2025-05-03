@@ -10,7 +10,6 @@
     font-weight: 500;
     line-height: 1.2;
   }
-
   h2 {
     margin-top: 0;
     margin-bottom: .5rem;
@@ -18,7 +17,6 @@
     font-weight: 500;
     line-height: 1.2;
   }
-
   h3 {
     margin-top: 0;
     margin-bottom: .5rem;
@@ -26,7 +24,6 @@
     font-weight: 500;
     line-height: 1.2;
   }
-
   h4 {
     margin-top: 0;
     margin-bottom: .5rem;
@@ -34,7 +31,6 @@
     font-weight: 500;
     line-height: 1.2;
   }
-
   h5 {
     margin-top: 0;
     margin-bottom: .5rem;
@@ -42,7 +38,6 @@
     font-weight: 500;
     line-height: 1.2;
   }
-
   h6 {
     margin-top: 0;
     margin-bottom: .5rem;
@@ -50,7 +45,6 @@
     font-weight: 500;
     line-height: 1.2;
   }
-
   p {
     margin-bottom: 1rem;
   }
