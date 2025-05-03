@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  vite_app:
+    image: ${PROJECT_IMAGE_NAME}:${VITE_ENV}-1.0
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        - VITE_ENV=${VITE_ENV}
+    container_name: ${COMPOSE_PROJECT_NAME}
+    restart: unless-stopped
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3000
+      - VITE_ENV=${VITE_ENV}
+    networks:
+      - app_network
+
+# laradock network
+# networks:
+  # app_network:
+  #   name: laradock_backend
+  #   external: true
+
+networks:
+  app_network:
+    name: ${COMPOSE_PROJECT_NAME}_app_network
+    driver: bridge
+    external: false
