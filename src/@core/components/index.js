@@ -132,6 +132,7 @@ import TextListItem from './list-item/TextListItem.vue'
 import BaseSplitter from './splitter/BaseSplitter.vue'
 import ResponsiveSplitter from './splitter/ResponsiveSplitter.vue'
 import BaseTabPanels from './tab-panels/BaseTabPanels.vue'
+import BaseScrollArea from './scroll-area/BaseScrollArea.vue'
 import BaseIcon from './icon/BaseIcon.vue'
 import LangSelect from './LangSelect.vue'
 import BasePage from './page/BasePage.vue'
@@ -290,6 +291,7 @@ export default {
     app.component('BaseSplitter', BaseSplitter)
     app.component('ResponsiveSplitter', ResponsiveSplitter)
     app.component('BaseTabPanels', BaseTabPanels)
+    app.component('BaseScrollArea', BaseScrollArea)
     app.component('BaseIcon', BaseIcon)
     app.component('LangSelect', LangSelect)
     app.component('BasePage', BasePage)
