@@ -56,6 +56,7 @@ import InputTimeRange from './form/InputTimeRange.vue'
 import InputPrioritySelect from './form/InputPrioritySelect.vue'
 import InputFrequencySelect from './form/InputFrequencySelect.vue'
 import InputOtp from './form/InputOtp.vue'
+import InputColor from './form/InputColor.vue'
 import BaseButton from './button/BaseButton.vue'
 import AddButton from './button/AddButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
@@ -214,6 +215,7 @@ export default {
     app.component('InputPrioritySelect', InputPrioritySelect)
     app.component('InputFrequencySelect', InputFrequencySelect)
     app.component('InputOtp', InputOtp)
+    app.component('InputColor', InputColor)
     app.component('BaseButton', BaseButton)
     app.component('AddButton', AddButton)
     app.component('DeleteButton', DeleteButton)
