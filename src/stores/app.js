@@ -9,6 +9,9 @@ export const useApp = defineStore({
       opened: false,
       withoutAnimation: false,
     },
+    form: {
+      labelPosition: 'top',
+    },
     language: getLanguage(),
     isLoading: false,
     isReading: false,
