@@ -39,7 +39,7 @@ export default defineComponent({
     height: { type: String, default: '100%' },
     width: { type: String, default: '100%' },
     position: { type: String },
-    preview: { type: Boolean, default: true },
+    preview: { type: Boolean, default: false },
     useAuthorization: { type: Boolean, default: false },
     headers: { type: Object },
     fileReaderMethod: { type: String, default: 'text' },
