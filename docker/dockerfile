@@ -17,7 +17,7 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 # 複製專案所有文件
-COPY ../ ./
+COPY . .
 
 # 根據環境選擇 .env 檔案，確保 build 使用正確的環境
 RUN cp .env.${VITE_ENV} .env
