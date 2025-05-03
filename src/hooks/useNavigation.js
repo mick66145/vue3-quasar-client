@@ -1,11 +1,14 @@
 
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+import useStorage from './useStorage'
 
 export const navigationProps = {
   to: [String, Object],
   replace: Boolean,
   href: String,
   target: String,
+  useStore: Boolean,
+  storeType: String, // session | local | cookie
 }
 
 export default function useNavigation ({
@@ -13,15 +16,40 @@ export default function useNavigation ({
   replace,
   href,
   target,
+  useStore = false,
+  storageKey = null,
+  storeType = 'session',
 }) {
   // data
   const router = useRouter()
+  const route = useRoute()
 
-  const onNavigation = () => {
-    if (href) { window.open(href, target) } else { router[replace ? 'replace' : 'push'](to) }
+  const { setItem, getItem, removeItem } = useStorage(storeType)
+
+  // methods
+  const onNavigation = ({ state }) => {
+    if (href) {
+      window.open(href, target)
+    } else {
+      if (useStore && state) {
+        const routeKey = storageKey || (typeof to === 'string' ? to : to.name)
+        setItem(routeKey, state)
+      }
+      router[replace ? 'replace' : 'push'](to)
+    }
+  }
+
+  const getNavigationData = () => {
+    const state = getItem(storageKey || route.name, {})
+    return state
+  }
+  const removeNavigationData = () => {
+    removeItem(route.name)
   }
 
   return {
     onNavigation,
+    getNavigationData,
+    removeNavigationData,
   }
 }
