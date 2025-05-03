@@ -43,7 +43,7 @@ export default function useServerDataTable ({
     }
     search.page = 1
     usePageSize && (search.page_size = 10)
-    search.orderby = sortParames.map((item) => `${item.field}:${item.order}`).join(',')
+    search.orderby = sortParames.length > 0 ? sortParames.map((item) => `${item.field}:${item.order}`).join(',') : null
     sort.value = sortParames
     setSessionStorage(sessionStorageKey, { search })
     await setCallback()
@@ -74,7 +74,7 @@ export default function useServerDataTable ({
         search: {
           page: 1,
           page_size: usePageSize ? 10 : null,
-          orderby: sortParames.map((item) => `${item.field}:${item.order}`).join(','),
+          orderby: sortParames.length > 0 ? sortParames.map((item) => `${item.field}:${item.order}`).join(',') : null,
         },
         sort: sortParames,
       }
