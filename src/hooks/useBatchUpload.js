@@ -33,13 +33,13 @@ export default function useBatchUpload () {
     const storeApp = useApp()
     const resUpload = {}
     const errors = []
-    storeApp.isLoading = true
+    storeApp.isCreate = true
 
     for (const [key, value] of Object.entries(payload)) {
       await uploadResource(key, value, resUpload, errors, resourceType)
     }
 
-    storeApp.isLoading = false
+    storeApp.isCreate = false
     return [resUpload, errors]
   }
 
