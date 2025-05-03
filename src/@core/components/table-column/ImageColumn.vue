@@ -4,7 +4,7 @@
     :title="title"
     :sortable="sortable"
     :width="width"
-    :min-width="min_width"
+    :min-width="minWidth"
   >
     <template #default="{ row }">
       <base-image
