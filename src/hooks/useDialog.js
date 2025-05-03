@@ -56,7 +56,7 @@ export default function useDialog ({
       }
     }
     if (callRead) {
-      const [res] = await callReadFetch(dataId)
+      const [res] = await callReadFetch(dataId, payload)
       if (res) {
         mapKeys(res, (_, key) => {
           data.state[key] = res[key] === undefined ? (data.state[key] !== undefined ? data.state[key] : '') : res[key]
@@ -74,6 +74,7 @@ export default function useDialog ({
     isShowDialog.value = true
   }
   const hideDialog = () => {
+    data.reset()
     isShowDialog.value = false
   }
   const save = async () => {
