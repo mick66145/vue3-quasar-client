@@ -19,25 +19,25 @@ export default function useServerDataTable ({
   const sort = ref([])
   const unSessionStorageParamesField = unSessionStorageParames.map((item) => item.field)
 
-  const onChangePage = (page) => {
+  const onChangePage = async (page) => {
     search.page = page
     setSessionStorage(sessionStorageKey, { search })
-    setCallback()
+    await setCallback()
   }
 
-  const onChangePageSize = (pageSize) => {
+  const onChangePageSize = async (pageSize) => {
     search.page_size = pageSize
     setSessionStorage(sessionStorageKey, { search })
-    setCallback()
+    await setCallback()
   }
 
-  const onChangeFilter = () => {
+  const onChangeFilter = async () => {
     search.page = 1
     setSessionStorage(sessionStorageKey, { search })
-    setCallback()
+    await setCallback()
   }
 
-  const onReset = () => {
+  const onReset = async () => {
     for (const [key, value] of Object.entries(searchParames)) {
       search[key] = value
     }
@@ -46,11 +46,11 @@ export default function useServerDataTable ({
     search.orderby = sortParames.map((item) => `${item.field}:${item.order}`).join(',')
     sort.value = sortParames
     setSessionStorage(sessionStorageKey, { search })
-    setCallback()
+    await setCallback()
   }
 
-  const onRefresh = () => {
-    setCallback()
+  const onRefresh = async () => {
+    await setCallback()
   }
 
   const setCallback = async () => {
@@ -93,7 +93,7 @@ export default function useServerDataTable ({
     for (const [key, value] of Object.entries(searchParames)) {
       (unSessionStorageParamesField.includes(key)) && (search[key] = value)
     }
-    setCallback()
+    await setCallback()
   })
 
   return {

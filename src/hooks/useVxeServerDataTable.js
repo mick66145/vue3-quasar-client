@@ -24,23 +24,23 @@ export default function useVxeServerDataTable ({
 
   // methods
 
-  const onChangePage = (page) => {
+  const onChangePage = async (page) => {
     search.page = page
     setSessionStorage(sessionStorageKey, { search, sort: sort.value })
-    setCallback()
+    await setCallback()
   }
-  const onChangePageSize = (pageSize) => {
+  const onChangePageSize = async (pageSize) => {
     search.page_size = pageSize
     setSessionStorage(sessionStorageKey, { search, sort: sort.value })
-    setCallback()
+    await setCallback()
   }
-  const onChangeFilter = () => {
+  const onChangeFilter = async () => {
     search.page = 1
     setSessionStorage(sessionStorageKey, { search, sort: sort.value })
-    setCallback()
+    await setCallback()
     dataTable.value && (dataTable.value.clearAllCheckboxRow())
   }
-  const onChangeSort = ({ sortList }) => {
+  const onChangeSort = async ({ sortList }) => {
     search.page = 1
     if (sortList.length > 0) {
       search.orderby = sortList.map((item) => `${item.field}:${item.order}`).join(',')
@@ -50,9 +50,9 @@ export default function useVxeServerDataTable ({
       sort.value = sortParames
     }
     setSessionStorage(sessionStorageKey, { search, sort: sort.value })
-    setCallback()
+    await setCallback()
   }
-  const onReset = () => {
+  const onReset = async () => {
     for (const [key, value] of Object.entries(searchParames)) {
       search[key] = value
     }
@@ -61,12 +61,12 @@ export default function useVxeServerDataTable ({
     search.orderby = sortParames.map((item) => `${item.field}:${item.order}`).join(',')
     sort.value = sortParames
     setSessionStorage(sessionStorageKey, { search, sort: sort.value })
-    setCallback()
+    await setCallback()
     dataTable.value && (sessionStorage.sort.forEach((item) => { dataTable.value.sort(item) }))
     dataTable.value && (dataTable.value.clearAllCheckboxRow())
   }
-  const onRefresh = () => {
-    setCallback()
+  const onRefresh = async () => {
+    await setCallback()
   }
   const setCallback = async () => {
     if (callback && callback instanceof Function) {
@@ -112,7 +112,7 @@ export default function useVxeServerDataTable ({
     for (const [key, value] of Object.entries(searchParames)) {
       (unSessionStorageParamesField.includes(key)) && (search[key] = value)
     }
-    setCallback()
+    await setCallback()
     dataTable.value && (sessionStorage.sort.forEach((item) => { dataTable.value.sort(item) }))
   })
 
