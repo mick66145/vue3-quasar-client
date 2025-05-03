@@ -1,5 +1,5 @@
 
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute, onBeforeRouteLeave } from 'vue-router'
 import useStorage from './useStorage'
 
 export const navigationProps = {
@@ -40,16 +40,23 @@ export default function useNavigation ({
   }
 
   const getNavigationData = () => {
-    const state = getItem(storageKey || route.name, {})
-    return state
+    return getItem(storageKey || route.name, {})
   }
+
   const removeNavigationData = () => {
     removeItem(route.name)
+  }
+
+  const setupBeforeRouteLeave = () => {
+    onBeforeRouteLeave(() => {
+      removeNavigationData()
+    })
   }
 
   return {
     onNavigation,
     getNavigationData,
     removeNavigationData,
+    setupBeforeRouteLeave,
   }
 }
