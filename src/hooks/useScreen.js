@@ -23,6 +23,7 @@ export default function useScreen () {
   const isScreenLarger2xl = computed(() => {
     return $q.screen.gt['2xl']
   })
+  const deviceType = computed(() => $q.screen.lt.sm ? 'mobile' : ($q.screen.lt.xl ? 'tablet' : 'desktop'))
 
   onMounted(() => {
     window.addEventListener('resize', () => { setScreenHeight(); setScreenWidth() })
@@ -44,5 +45,6 @@ export default function useScreen () {
     isScreenLargerLg,
     isScreenLargerXl,
     isScreenLarger2xl,
+    deviceType,
   }
 }
