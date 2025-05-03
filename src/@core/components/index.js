@@ -123,6 +123,7 @@ import SelectTree from './tree/SelectTree.vue'
 import ChipColumn from './table-column/ChipColumn.vue'
 import ImageColumn from './table-column/ImageColumn.vue'
 import ImageMultipleColumn from './table-column/ImageMultipleColumn.vue'
+import IconColumn from './table-column/IconColumn.vue'
 import LanguageSimpleDynamicForm from './simple-dynamic-form/LanguageSimpleDynamicForm.vue'
 import SimpleDynamicForm from './simple-dynamic-form/SimpleDynamicForm.vue'
 import IconListItem from './list-item/IconListItem.vue'
@@ -131,6 +132,7 @@ import TextListItem from './list-item/TextListItem.vue'
 import BaseSplitter from './splitter/BaseSplitter.vue'
 import ResponsiveSplitter from './splitter/ResponsiveSplitter.vue'
 import BaseTabPanels from './tab-panels/BaseTabPanels.vue'
+import BaseIcon from './icon/BaseIcon.vue'
 import LangSelect from './LangSelect.vue'
 import BasePage from './page/BasePage.vue'
 import PaddingPage from './page/PaddingPage.vue'
@@ -279,6 +281,7 @@ export default {
     app.component('ChipColumn', ChipColumn)
     app.component('ImageColumn', ImageColumn)
     app.component('ImageMultipleColumn', ImageMultipleColumn)
+    app.component('IconColumn', IconColumn)
     app.component('SimpleDynamicForm', SimpleDynamicForm)
     app.component('LanguageSimpleDynamicForm', LanguageSimpleDynamicForm)
     app.component('IconListItem', IconListItem)
@@ -287,6 +290,7 @@ export default {
     app.component('BaseSplitter', BaseSplitter)
     app.component('ResponsiveSplitter', ResponsiveSplitter)
     app.component('BaseTabPanels', BaseTabPanels)
+    app.component('BaseIcon', BaseIcon)
     app.component('LangSelect', LangSelect)
     app.component('BasePage', BasePage)
     app.component('PaddingPage', PaddingPage)
