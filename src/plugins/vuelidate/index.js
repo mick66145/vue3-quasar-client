@@ -110,7 +110,7 @@ export const vuelidate = {
       return regex.test(val) || message
     }
   },
-  dayjIsBefore (locator, message = false, format = 'YYYY-MM-DD') {
+  dayIsBefore (locator, message = false, format = 'YYYY-MM-DD') {
     return (val) => {
       if (!val) return true
       return dayjs(val, format).isBefore(dayjs(locator, format)) || message
@@ -122,7 +122,7 @@ export const vuelidate = {
       return dayjs(val, format).isSameOrBefore(dayjs(locator, format)) || message
     }
   },
-  dayjIsAfter (locator, message = false, format = 'YYYY-MM-DD') {
+  dayIsAfter (locator, message = false, format = 'YYYY-MM-DD') {
     return (val) => {
       if (!val) return true
       return dayjs(val, format).isAfter(dayjs(locator, format)) || message
