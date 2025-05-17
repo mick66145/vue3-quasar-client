@@ -31,6 +31,7 @@ export default defineComponent({
     channelId: { type: String, default: Configuration('facebookClientId') },
     channelSecret: { type: String, default: Configuration('facebookClientSecret') },
     redirectUri: { type: String, default: Configuration('facebookRedirectUri') },
+    state: { type: String, default: '' },
     scope: { type: String, default: 'profile openid email' },
     useIconStyle: { type: Boolean, default: false },
     action: { type: String, default: 'oauth2' }, // oauth2,share
@@ -38,7 +39,7 @@ export default defineComponent({
   emits: ['handleSuccess'],
   setup (props, { emit }) {
     // data
-    const { label, channelId, channelSecret, redirectUri, scope } = toReactive(props)
+    const { label, channelId, channelSecret, redirectUri, state, scope } = toReactive(props)
 
     // computed
     const buttonLabel = computed(() => {
@@ -69,6 +70,7 @@ export default defineComponent({
       channelId: channelId,
       channelSecret: channelSecret,
       redirectUri: redirectUri,
+      state: state.value,
       scope: scope,
     })
     const { showLoading, hideLoading } = useLoading({})

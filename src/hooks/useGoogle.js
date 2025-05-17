@@ -6,6 +6,7 @@ export default function useGoogle ({
   channelId = Configuration('googleClientId'),
   channelSecret = Configuration('googleClientSecret'),
   redirectUri = Configuration('googleRedirectUri'),
+  state = '',
   scope = 'profile+email',
 }) {
   // data
@@ -16,10 +17,16 @@ export default function useGoogle ({
     const code = urlParams.value.get('code')
     return code !== null
   })
+  const redirectState = computed(() => {
+    const state = urlParams.value.get('state')
+    if (!state) return null
+    const params = new URLSearchParams(state)
+    return Object.fromEntries(params.entries())
+  })
 
   // methods
   const oauth2 = () => {
-    const oauth2Url = `https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=${channelId}&redirect_uri=${redirectUri}&state=123&scope=${scope}`
+    const oauth2Url = `https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=${channelId}&redirect_uri=${redirectUri}&state=${state}&scope=${scope}`
     location.href = oauth2Url
   }
 
@@ -55,6 +62,7 @@ export default function useGoogle ({
   }
   return {
     isRedirect,
+    redirectState,
     oauth2,
     oauth2Token,
     share,

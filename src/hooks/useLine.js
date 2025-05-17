@@ -6,6 +6,7 @@ export default function useLine ({
   channelId = Configuration('lineClientId'),
   channelSecret = Configuration('lineClientSecret'),
   redirectUri = Configuration('lineRedirectUri'),
+  state = '',
   scope = 'profile openid email',
 }) {
   // data
@@ -16,9 +17,16 @@ export default function useLine ({
     const code = urlParams.value.get('code')
     return code !== null
   })
+  const redirectState = computed(() => {
+    const state = urlParams.value.get('state')
+    if (!state) return null
+    const params = new URLSearchParams(state)
+    return Object.fromEntries(params.entries())
+  })
+
   // methods
   const oauth2 = () => {
-    const loginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${channelId}&redirect_uri=${redirectUri}&state=123&scope=${scope}`
+    const loginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${channelId}&redirect_uri=${redirectUri}&state=${state}&scope=${scope}`
     location.href = loginUrl
   }
   const oauth2Token = async () => {
@@ -49,6 +57,7 @@ export default function useLine ({
   }
   return {
     isRedirect,
+    redirectState,
     oauth2,
     oauth2Token,
     share,

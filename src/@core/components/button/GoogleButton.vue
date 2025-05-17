@@ -30,6 +30,7 @@ export default defineComponent({
     channelId: { type: String, default: Configuration('googleClientId') },
     channelSecret: { type: String, default: Configuration('googleClientSecret') },
     redirectUri: { type: String, default: Configuration('googleRedirectUri') },
+    state: { type: String, default: '' },
     scope: { type: String, default: 'profile openid email' },
     useIconStyle: { type: Boolean, default: false },
     action: { type: String, default: 'oauth2' }, // oauth2,share
@@ -37,7 +38,7 @@ export default defineComponent({
   emits: ['handleSuccess'],
   setup (props, { emit }) {
     // data
-    const { label, channelId, channelSecret, redirectUri, scope } = toRefs(props)
+    const { label, channelId, channelSecret, redirectUri, state, scope } = toRefs(props)
 
     // computed
     const buttonLabel = computed(() => {
@@ -68,6 +69,7 @@ export default defineComponent({
       channelId: channelId.value,
       channelSecret: channelSecret.value,
       redirectUri: redirectUri.value,
+      state: state.value,
       scope: scope.value,
     })
     const { showLoading, hideLoading } = useLoading({})

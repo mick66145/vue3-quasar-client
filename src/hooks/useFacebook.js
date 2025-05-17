@@ -6,6 +6,7 @@ export default function useFacebook ({
   channelId = Configuration('facebookClientId'),
   channelSecret = Configuration('facebookClientSecret'),
   redirectUri = Configuration('facebookRedirectUri'),
+  state = '',
   scope = 'profile+email',
 }) {
   // data
@@ -16,10 +17,16 @@ export default function useFacebook ({
     const code = urlParams.value.get('code')
     return code !== null
   })
+  const redirectState = computed(() => {
+    const state = urlParams.value.get('state')
+    if (!state) return null
+    const params = new URLSearchParams(state)
+    return Object.fromEntries(params.entries())
+  })
 
   // methods
   const oauth2 = () => {
-    const oauth2Url = `https://www.facebook.com/v19.0/dialog/oauth?client_id=${channelId}&redirect_uri=${redirectUri}`
+    const oauth2Url = `https://www.facebook.com/v19.0/dialog/oauth?client_id=${channelId}&redirect_uri=${redirectUri}&state=${state}`
     location.href = oauth2Url
   }
 
@@ -54,6 +61,7 @@ export default function useFacebook ({
   }
   return {
     isRedirect,
+    redirectState,
     oauth2,
     oauth2Token,
     share,
